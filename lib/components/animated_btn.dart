@@ -28,17 +28,20 @@ class AnimatedBtn extends StatelessWidget {
             ),
             Positioned.fill(
               top: 8,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const Icon(CupertinoIcons.arrow_right),
-                  const SizedBox(width: 8),
-                  Text(
-                    "Start the course",
-                    style: Theme.of(context).textTheme.button,
-                  )
-                ],
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween
+                  ,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Discover",
+                      style: Theme.of(context).textTheme.button,
+                    ),
+                    const Icon(CupertinoIcons.arrow_right),
+                  ],
+                ),
               ),
             )
           ],

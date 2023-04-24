@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "241070395636",
+    "project_id": "insighteye-ccbf7",
+    "storage_bucket": "insighteye-ccbf7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:241070395636:android:5093b34be2444ef9590ea1",
+        "android_client_info": {
+          "package_name": "com.example.insighteye"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "241070395636-h1hmtqc8vi23pe5g99vvrbb6d71udp6t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAUf0YDpYWTgiDYtCXAdh965UColCtonw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "241070395636-h1hmtqc8vi23pe5g99vvrbb6d71udp6t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
