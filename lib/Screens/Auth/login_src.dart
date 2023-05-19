@@ -14,6 +14,7 @@ class LoginSrc extends StatefulWidget {
   const LoginSrc({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _LoginSrcState createState() => _LoginSrcState();
 }
 
@@ -39,7 +40,7 @@ class _LoginSrcState extends State<LoginSrc> {
     return Container(
       width: s.width,
       height: s.height,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage(
             'assets/Images/bg.png',
