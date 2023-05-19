@@ -49,9 +49,9 @@ class _IntroScreenState extends State<IntroScreen> {
               child: const SizedBox(),
             ),
           ),
-          // const RiveAnimation.asset(
-          //   "assets/RiveAssets/shapes.riv",
-          // ),
+          const RiveAnimation.asset(
+            "assets/RiveAssets/shapes.riv",
+          ),
           Positioned.fill(
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 30, sigmaY: 30),
@@ -101,25 +101,25 @@ class _IntroScreenState extends State<IntroScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(height: s.height * 0.2,),
+                  SizedBox(
+                    height: s.height * 0.2,
+                  ),
                   AnimatedBtn(
                     btnAnimationController: _btnAnimationController,
                     press: () {
                       _btnAnimationController.isActive = true;
 
                       Future.delayed(
-                        const Duration(milliseconds: 800),
+                        const Duration(milliseconds: 1000),
                         () {
                           setState(() {
                             isShowSignInDialog = true;
                           });
+                          Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => LoginSrc()));
                         },
                       );
-                       Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    LoginSrc()));
+                      
                     },
                   ),
                 ],

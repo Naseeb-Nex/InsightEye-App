@@ -43,6 +43,8 @@ dependencies:
   firebase_storage: ^11.0.10
   cloud_firestore: ^4.3.1
   fluttertoast: ^8.0.8
+  provider: ^6.0.1
+  uuid: ^3.0.7
 
 dev_dependencies:
   flutter_test:
@@ -116,7 +118,7 @@ flutter:
     
     - family: Poppins
       fonts:
-        - asset: assets/Fonts/Poppins-Bold.ttf
+        - asset: assets/fonts/Poppins-Bold.ttf
           weight: 700
 
   # fonts:

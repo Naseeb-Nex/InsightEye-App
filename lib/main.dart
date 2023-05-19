@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:insighteye_app/Screens/splashscreen.dart';
 
 import 'Screens/initial Screen/introScreen.dart';
 
@@ -21,8 +22,10 @@ class MyApp extends StatelessWidget {
       title: 'InsightEye',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        primaryColor: _primaryColor,
+        accentColor: _accentColor,
+        primarySwatch: Colors.grey,
         scaffoldBackgroundColor: Color(0xFFEEF1F8),
-        primarySwatch: Colors.blue,
         fontFamily: "Montserrat",
         inputDecorationTheme: const InputDecorationTheme(
           filled: true,
@@ -30,7 +33,7 @@ class MyApp extends StatelessWidget {
           errorStyle: TextStyle(height: 0),
         ),
       ),
-      home: const IntroScreen(),
+      home:  SplashScreen(),
     );
   }
 }
