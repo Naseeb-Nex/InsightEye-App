@@ -47,7 +47,7 @@ class AuthMethods {
 
         if (cred.user != null) {
         // Mounding Credntials
-        await cred.user!.updateDisplayName("${orgId}A$fname");
+        await cred.user!.updateDisplayName("A$orgId");
       }
 
         //Register Orgnization
@@ -84,36 +84,5 @@ class AuthMethods {
     return res;
   }
 
-  //logging in user
-  Future<String> loginUser({
-    required String email,
-    required String password,
-  }) async {
-    String res = "Some error Occured";
 
-    try {
-      if (email.isNotEmpty || password.isNotEmpty) {
-        await _auth.signInWithEmailAndPassword(
-            email: email, password: password);
-        res = "success";
-      } else {
-        res = "Please enter all the fields";
-      }
-    } /*on FirebaseAuthException catch (err) {
-      if (err.code == 'user-not-found') {
-        res = 'user-not-found';
-      } else if (err.code == 'wrong-password') {
-        res = 'Password should be at least 6 characters';
-      }
-    }*/
-    catch (err) {
-      res = err.toString();
-    }
-    return res;
-  }
-
-  //sign out
-  Future<void> signOut() async {
-    await _auth.signOut();
-  }
 }
