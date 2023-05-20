@@ -1,7 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:insighteye_app/Screens/Admin/admin_home_src.dart';
+
 import 'package:insighteye_app/Screens/Auth/org_reg_src.dart';
+import 'package:insighteye_app/Screens/homeWrapper.dart';
 
 import 'package:insighteye_app/components/styles.dart';
 import 'package:insighteye_app/constants/constants.dart';
@@ -70,11 +71,11 @@ class _LoginSrcState extends State<LoginSrc> {
                       width: s.width * 0.9,
                       height: s.height * 0.5302,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
+                          borderRadius: BorderRadius.circular(40),
                           color: const Color(0xFFFEFEFF)),
                       child: Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: s.width * 0.0864),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: s.width * 0.0864),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
@@ -99,8 +100,7 @@ class _LoginSrcState extends State<LoginSrc> {
                                     TextFormField(
                                       autofocus: false,
                                       controller: emailController,
-                                      keyboardType:
-                                          TextInputType.emailAddress,
+                                      keyboardType: TextInputType.emailAddress,
                                       validator: (value) {
                                         if (value!.isEmpty) {
                                           return ("Please Enter Your Email");
@@ -117,7 +117,8 @@ class _LoginSrcState extends State<LoginSrc> {
                                         emailController.text = value!;
                                       },
                                       textInputAction: TextInputAction.next,
-                                      decoration: Styles().SimpleInputDec("Email Id"),
+                                      decoration:
+                                          Styles().SimpleInputDec("Email Id"),
                                       style: const TextStyle(
                                         fontFamily: "Montserrat",
                                         fontSize: 15,
@@ -142,7 +143,8 @@ class _LoginSrcState extends State<LoginSrc> {
                                         passwordController.text = value!;
                                       },
                                       textInputAction: TextInputAction.done,
-                                      decoration: Styles().SimpleInputDec("Passowrd"),
+                                      decoration:
+                                          Styles().SimpleInputDec("Password"),
                                       style: const TextStyle(
                                         fontFamily: "Montserrat",
                                         fontSize: 15,
@@ -186,8 +188,7 @@ class _LoginSrcState extends State<LoginSrc> {
                                             Color(0XFFd450e6),
                                           ],
                                         ),
-                                        borderRadius:
-                                            BorderRadius.circular(30),
+                                        borderRadius: BorderRadius.circular(30),
                                         boxShadow: const [
                                           BoxShadow(
                                               color: Colors.black26,
@@ -198,9 +199,8 @@ class _LoginSrcState extends State<LoginSrc> {
                                       child: ElevatedButton(
                                         style: Styles().buttonStyle(),
                                         child: Padding(
-                                          padding:
-                                              const EdgeInsets.fromLTRB(
-                                                  40, 10, 40, 10),
+                                          padding: const EdgeInsets.fromLTRB(
+                                              40, 10, 40, 10),
                                           child: Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
@@ -211,11 +211,9 @@ class _LoginSrcState extends State<LoginSrc> {
                                                 'Login'.toUpperCase(),
                                                 style: const TextStyle(
                                                     fontSize: 20,
-                                                    fontWeight:
-                                                        FontWeight.bold,
+                                                    fontWeight: FontWeight.bold,
                                                     color: Colors.white,
-                                                    fontFamily:
-                                                        "Montserrat"),
+                                                    fontFamily: "Montserrat"),
                                               ),
                                               const SizedBox(
                                                 width: 15,
@@ -227,8 +225,7 @@ class _LoginSrcState extends State<LoginSrc> {
                                                           width: 15,
                                                           child:
                                                               CircularProgressIndicator(
-                                                                  color:
-                                                                      white))
+                                                                  color: white))
                                                       : null),
                                             ],
                                           ),
@@ -245,8 +242,7 @@ class _LoginSrcState extends State<LoginSrc> {
                                       //child: Text('Don\'t have an account? Create'),
                                       child: Text.rich(TextSpan(children: [
                                         const TextSpan(
-                                            text:
-                                                "Setup Your Organization ",
+                                            text: "Setup Your Organization ",
                                             style: TextStyle(
                                                 fontFamily: "Montserrat")),
                                         TextSpan(
@@ -293,7 +289,7 @@ class _LoginSrcState extends State<LoginSrc> {
             .then((uid) => {
                   Fluttertoast.showToast(msg: "Login Successful"),
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => const AdminHomeSrc())),
+                      builder: (context) => const HomeWrapper())),
                 });
         setState(() {
           load = false;
@@ -305,27 +301,23 @@ class _LoginSrcState extends State<LoginSrc> {
         switch (error.code) {
           case "invalid-email":
             errorMessage = "Your email address appears to be malformed.";
-
             break;
           case "wrong-password":
             errorMessage = "Your password is wrong.";
             break;
-          case "userLogin-found":
-            errorMessage = "Login this email doesn't exist.";
-            break;
-          case "userLogin":
-            errorMessage = "Login this email has been disabled.";
+          case "user-not-found":
+            errorMessage = "User Not Found.";
             break;
           case "too-many-requests":
-            errorMessage = "Something went wrong.. Try again!";
+            errorMessage = "Too many requests. Please try again later.";
             break;
           case "operation-not-allowed":
             errorMessage = "Signing in with Email and Password is not enabled.";
             break;
           default:
-            errorMessage =
-                "Something went wrong. Please check your internet connection?";
+            errorMessage = "Something went wrong :(";
         }
+
         Fluttertoast.showToast(msg: errorMessage!);
       }
     }
