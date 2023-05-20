@@ -1,12 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:insighteye_app/Screens/Admin/admin_home_src.dart';
 import 'package:insighteye_app/Screens/Auth/firebase_auth/auth_methods.dart';
 import 'package:insighteye_app/Screens/Auth/login_src.dart';
+import 'package:insighteye_app/Screens/homeWrapper.dart';
 import 'package:insighteye_app/components/styles.dart';
 import 'package:insighteye_app/constants/constants.dart';
-import 'package:insighteye_app/constants/uuidgenerater.dart';
 
 
 
@@ -22,15 +20,12 @@ class _OrgRegistrationSrcState extends State<OrgRegistrationSrc> {
   bool checkedValue = false;
   FirebaseFirestore fb = FirebaseFirestore.instance;
   bool vLoading = false;
-  // Username validation
-  bool valid_username = false;
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _fullnameController = TextEditingController();
   // Form Key
   final _formKey = GlobalKey<FormState>();
 
-  Uint8List? _image;
   bool _isLoading = false;
   final TextEditingController _orgnameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -67,7 +62,7 @@ class _OrgRegistrationSrcState extends State<OrgRegistrationSrc> {
     if (res == "success") {
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(
-            builder: (context) => const AdminHomeSrc(),
+            builder: (context) => const HomeWrapper(),
           ),
           (route) => false);
       setState(() {
@@ -373,7 +368,7 @@ class _OrgRegistrationSrcState extends State<OrgRegistrationSrc> {
                             " Log in.",
                             style: TextStyle(
                               fontFamily: "Montserrat",
-                              color: primarycolor,
+                              color: bluebg,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
