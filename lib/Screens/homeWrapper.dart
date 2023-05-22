@@ -1,6 +1,7 @@
 // ignore: file_names
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:insighteye_app/Screens/Technician/Createprofile.dart';
 import 'package:insighteye_app/screens/Office/homeoffice.dart';
 
 import 'Admin/homeadminsrc.dart';
@@ -18,6 +19,7 @@ class _HomeWrapperState extends State<HomeWrapper> {
   User? user = FirebaseAuth.instance.currentUser;
   String? userType;
   String? orgId;
+  String? photoUrl;
   @override
   void initState() {
     super.initState();
@@ -26,14 +28,23 @@ class _HomeWrapperState extends State<HomeWrapper> {
       setState(() {
         userType = displayName.substring(0, 1);
         orgId = displayName.substring(1);
+        photoUrl = user?.photoURL;
       });
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    if (userType == "T") {
-      return HomeTech(orgId: orgId);
+    if (userType == "T" ) {
+      if(photoUrl != null){
+      return HomeTech(
+        orgId: orgId,
+      );
+
+      }
+      else {
+        return CreateProfile(orgId: orgId,);
+      }
     } else if (userType == "A") {
       return HomeAdmin(orgId: orgId);
     }
