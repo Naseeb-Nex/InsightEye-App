@@ -35,15 +35,15 @@ class _HomeWrapperState extends State<HomeWrapper> {
 
   @override
   Widget build(BuildContext context) {
-    if (userType == "T" ) {
-      if(photoUrl != null){
-      return HomeTech(
-        orgId: orgId,
-      );
-
-      }
-      else {
-        return CreateProfile(orgId: orgId,);
+    if (userType == "T") {
+      if (photoUrl != null) {
+        return HomeTech(
+          orgId: orgId,
+        );
+      } else {
+        return CreateProfile(
+          orgId: orgId,
+        );
       }
     } else if (userType == "A") {
       return HomeAdmin(orgId: orgId);
