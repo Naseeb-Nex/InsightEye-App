@@ -145,6 +145,7 @@ class _confrimationcardwrapperState extends State<Confrimationcardwrapper> {
                   height: 5,
                 ),
                 Confirmationcard(
+                  orgId: widget.orgId,
                   uid: allpgm[i]['uid'],
                   name: allpgm[i]['name'],
                   address: allpgm[i]['address'],
@@ -165,6 +166,7 @@ class _confrimationcardwrapperState extends State<Confrimationcardwrapper> {
                   assignedtime: allpgm[i]['assignedtime'],
                   assigneddate: allpgm[i]['assigneddate'],
                   priority: allpgm[i]['priority'],
+                  techuid: allpgm[i]['techuid'],
                 )
               ]
             ],
