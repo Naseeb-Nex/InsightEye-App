@@ -27,6 +27,7 @@ class Detailingsrc extends StatefulWidget {
   String? assigneddate;
   String? priority;
   String? custdocname;
+  String? orgId;
 
   Detailingsrc({
     Key? key,
@@ -50,6 +51,7 @@ class Detailingsrc extends StatefulWidget {
     this.assigneddate,
     this.priority,
     this.custdocname,
+    this.orgId,
   }) : super(key: key);
 
   @override
@@ -257,8 +259,7 @@ class _DetailingsrcState extends State<Detailingsrc> {
                                 Container(
                                   decoration: BoxDecoration(
                                       color: const Color(0xFFd7e3fc),
-                                      borderRadius:
-                                          BorderRadius.circular(10)),
+                                      borderRadius: BorderRadius.circular(10)),
                                   padding: const EdgeInsets.symmetric(
                                       vertical: 4, horizontal: 8),
                                   child: Text(
@@ -329,16 +330,14 @@ class _DetailingsrcState extends State<Detailingsrc> {
                               height: 10,
                             ),
                             Row(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Container(
                                   padding: const EdgeInsets.symmetric(
                                       vertical: 4, horizontal: 8),
                                   decoration: BoxDecoration(
                                       color: const Color(0xFFd7e3fc),
-                                      borderRadius:
-                                          BorderRadius.circular(10)),
+                                      borderRadius: BorderRadius.circular(10)),
                                   child: Text(
                                     "${widget.type}",
                                     style: const TextStyle(
@@ -379,7 +378,13 @@ class _DetailingsrcState extends State<Detailingsrc> {
                             decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: Color(0xff9381ff)),
-                            child: Text("${widget.priority}", style: const TextStyle(fontFamily: "Montserrat", color: white, fontWeight: FontWeight.bold),),
+                            child: Text(
+                              "${widget.priority}",
+                              style: const TextStyle(
+                                  fontFamily: "Montserrat",
+                                  color: white,
+                                  fontWeight: FontWeight.bold),
+                            ),
                           ),
                         )
                       ],
@@ -393,6 +398,7 @@ class _DetailingsrcState extends State<Detailingsrc> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => Completedsrc(
+                              orgId: widget.orgId,
                               uid: widget.uid,
                               name: widget.name,
                               address: widget.address,
