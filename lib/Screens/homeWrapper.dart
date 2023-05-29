@@ -1,4 +1,3 @@
-// ignore: file_names
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:insighteye_app/Screens/Technician/Createprofile.dart';
@@ -37,16 +36,14 @@ class _HomeWrapperState extends State<HomeWrapper> {
   Widget build(BuildContext context) {
     if (userType == "T") {
       if (photoUrl != null) {
-        return HomeTech(
-          orgId: orgId,
-        );
+        return const HomeTech();
       } else {
         return CreateProfile(
           orgId: orgId,
         );
       }
     } else if (userType == "A") {
-      return HomeAdmin(orgId: orgId);
+      return const HomeAdmin();
     }
     return const HomeOffice();
   }
