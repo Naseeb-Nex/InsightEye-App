@@ -15,16 +15,13 @@ import 'package:iconsax/iconsax.dart';
 
 // ignore: must_be_immutable
 class HomeTech extends StatefulWidget {
-  // TODO : this need to be change to String
-  String? orgId;
-  String? uid;
-  HomeTech({
+
+  const HomeTech({
     Key? key,
-    this.orgId,
-    this.uid,
   }) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _HomeTechState createState() => _HomeTechState();
 }
 
@@ -34,13 +31,22 @@ class _HomeTechState extends State<HomeTech> {
 
   String? name;
   String? username;
-  int pgm_size = -1;
+  int pgmSize = -1;
+  String? orgId;
+  String? uid;
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
+    String displayName = user?.displayName ?? '';
+    if (user != null && displayName != "") {
+      setState(() {
+        orgId = displayName.substring(1);
+        uid = user?.uid;
+      });
+    }
   }
 
   // report visiblity
@@ -214,7 +220,7 @@ class _HomeTechState extends State<HomeTech> {
                               child: InkWell(
                                 onTap: () {
                                   Scaffold.of(context).closeDrawer();
-                                  if (pgm_size == -1) {
+                                  if (pgmSize == -1) {
                                     // something is wrong
                                     showDialog(
                                         context: context,
@@ -294,11 +300,11 @@ class _HomeTechState extends State<HomeTech> {
                                               ),
                                             ));
                                   }
-                                  if (pgm_size == 0) {
+                                  if (pgmSize == 0) {
                                     // Dialog box for confirmation
                                     fb
                                         .collection("organizations")
-                                        .doc("${widget.orgId}")
+                                        .doc("$orgId")
                                         .collection("Reports")
                                         .doc(year)
                                         .collection("Month")
@@ -306,8 +312,7 @@ class _HomeTechState extends State<HomeTech> {
                                         .collection(day)
                                         .doc("Tech")
                                         .collection("Reports")
-                                        // TODO : Replace Username
-                                        .doc("username")
+                                        .doc("$uid")
                                         .get()
                                         .then(
                                       (DocumentSnapshot doc) {
@@ -660,7 +665,7 @@ class _HomeTechState extends State<HomeTech> {
                                           "Assigned Counter update Error: $e"),
                                     );
                                   }
-                                  if (pgm_size > 0) {
+                                  if (pgmSize > 0) {
                                     // You have more work to do
                                     showDialog(
                                         context: context,
@@ -772,7 +777,7 @@ class _HomeTechState extends State<HomeTech> {
                                                   DocumentSnapshot>(
                                                 future: fb
                                                     .collection("organizations")
-                                                    .doc("${widget.orgId}")
+                                                    .doc("$orgId")
                                                     .collection("technician")
                                                     .doc(username)
                                                     .collection("Vehicle")
@@ -1143,9 +1148,9 @@ class _HomeTechState extends State<HomeTech> {
                                                 FutureBuilder<DocumentSnapshot>(
                                               future: fb
                                                   .collection("organizations")
-                                                  .doc("${widget.orgId}")
+                                                  .doc("$orgId")
                                                   .collection("technician")
-                                                  .doc("${widget.uid}")
+                                                  .doc("$uid")
                                                   .collection("Vehicle")
                                                   .doc(techvdoc)
                                                   .get(),
@@ -1452,15 +1457,15 @@ class _HomeTechState extends State<HomeTech> {
                     child: StreamBuilder<QuerySnapshot>(
                         stream: FirebaseFirestore.instance
                             .collection("organizations")
-                            .doc("${widget.orgId}")
+                            .doc("$orgId")
                             .collection("technician")
-                            .doc("${user?.uid}")
+                            .doc("$uid")
                             .collection("Assignedpgm")
                             .snapshots(),
                         builder: (BuildContext context,
                             AsyncSnapshot<QuerySnapshot> snapshot) {
                           if (snapshot.hasError) {
-                            pgm_size = -1;
+                            pgmSize = -1;
                             return const Center(
                                 child: Text("Something Went Wrong :(",
                                     style: TextStyle(
@@ -1470,7 +1475,7 @@ class _HomeTechState extends State<HomeTech> {
                           }
                           if (snapshot.connectionState ==
                               ConnectionState.waiting) {
-                            pgm_size = -1;
+                            pgmSize = -1;
                             return SizedBox(
                               height: s.height * 0.7,
                               child: const Center(
@@ -1488,7 +1493,7 @@ class _HomeTechState extends State<HomeTech> {
                             a['uid'] = document.id;
                           }).toList();
 
-                          pgm_size = allpgm.length;
+                          pgmSize = allpgm.length;
 
                           // Report button visiblity
                           if (allpgm.isEmpty) {
@@ -1525,6 +1530,7 @@ class _HomeTechState extends State<HomeTech> {
                                   assigneddate: allpgm[i]['assigneddate'],
                                   priority: allpgm[i]['priority'],
                                   custdocname: allpgm[i]['custdocname'],
+                                  orgId: orgId,
                                 ),
                               ],
                               const SizedBox(
