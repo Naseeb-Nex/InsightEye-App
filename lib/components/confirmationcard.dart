@@ -30,7 +30,6 @@ class Confirmationcard extends StatefulWidget {
   String? uid;
   String? upDate;
   String? upTime;
-  String? username;
   String? orgId;
   String? techuid;
 
@@ -49,7 +48,6 @@ class Confirmationcard extends StatefulWidget {
     this.upTime,
     this.docname,
     this.status,
-    this.username,
     this.techname,
     this.assignedtime,
     this.assigneddate,
@@ -97,7 +95,7 @@ class _ConfirmationcardState extends State<Confirmationcard> {
       prospec: widget.prospec,
       instadate: widget.instadate,
       status: "assigned",
-      username: widget.username,
+      techuid: widget.techuid,
       techname: widget.techname,
       priority: widget.priority,
       assigneddate: assigneddate,
@@ -118,7 +116,7 @@ class _ConfirmationcardState extends State<Confirmationcard> {
       upTime: widget.upTime,
       docname: widget.docname,
       status: "assigned",
-      username: widget.username,
+      techuid: widget.techuid,
       techname: widget.techname,
       priority: widget.priority,
       assigneddate: assigneddate,
@@ -139,7 +137,7 @@ class _ConfirmationcardState extends State<Confirmationcard> {
       upTime: assignedtime,
       day: day,
       month: month,
-      username: widget.username,
+      techuid: widget.techuid,
       more: formattedDate,
     );
 
@@ -155,7 +153,7 @@ class _ConfirmationcardState extends State<Confirmationcard> {
       upTime: assignedtime,
       day: day,
       month: month,
-      username: widget.username,
+      techuid: widget.techuid,
       more: formattedDate,
     );
 

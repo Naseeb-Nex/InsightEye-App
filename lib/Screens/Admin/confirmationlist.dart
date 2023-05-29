@@ -146,6 +146,7 @@ class _confrimationcardwrapperState extends State<Confrimationcardwrapper> {
                 ),
                 Confirmationcard(
                   orgId: widget.orgId,
+                  // TODO : find why UID is changing?
                   uid: allpgm[i]['uid'],
                   name: allpgm[i]['name'],
                   address: allpgm[i]['address'],
@@ -161,7 +162,6 @@ class _confrimationcardwrapperState extends State<Confrimationcardwrapper> {
                   prospec: allpgm[i]['prospec'],
                   instadate: allpgm[i]['instadate'],
                   status: allpgm[i]['status'],
-                  username: allpgm[i]['username'],
                   techname: allpgm[i]['techname'],
                   assignedtime: allpgm[i]['assignedtime'],
                   assigneddate: allpgm[i]['assigneddate'],
