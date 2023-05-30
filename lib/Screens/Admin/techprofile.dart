@@ -536,7 +536,7 @@ class _TechprofilesrcState extends State<Techprofilesrc> {
               orgId: widget.orgId,
             );
           });
-    }).catchError((onError) => print("Something wents wrong"));
+    });
   }
 }
 
@@ -694,7 +694,7 @@ class _RemovetechalertState extends State<Removetechalert> {
             context,
             MaterialPageRoute(
                 builder: (BuildContext context) => const LoginSrc()));
-      }).catchError((onError) => print("technician not deletd"));
+      });
     }
   }
 }
