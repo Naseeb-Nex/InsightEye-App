@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:insighteye_app/Screens/models/user_model.dart';
 import 'package:insighteye_app/constants/constants.dart';
 import 'package:insighteye_app/screens/Technician/todaysreportsrc.dart';
 
@@ -15,7 +16,6 @@ import 'package:iconsax/iconsax.dart';
 
 // ignore: must_be_immutable
 class HomeTech extends StatefulWidget {
-
   const HomeTech({
     Key? key,
   }) : super(key: key);
@@ -30,10 +30,11 @@ class _HomeTechState extends State<HomeTech> {
   FirebaseFirestore fb = FirebaseFirestore.instance;
 
   String? name;
-  String? username;
+  String? techuid;
   int pgmSize = -1;
   String? orgId;
   String? uid;
+  UserModel profile = UserModel();
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -45,6 +46,17 @@ class _HomeTechState extends State<HomeTech> {
       setState(() {
         orgId = displayName.substring(1);
         uid = user?.uid;
+      });
+      FirebaseFirestore.instance
+          .collection("organizations")
+          .doc("$orgId")
+          .collection("technician")
+          .doc(uid)
+          .get()
+          .then((value) {
+        setState(() {
+          profile = UserModel.fromMap(value.data());
+        });
       });
     }
   }
@@ -112,16 +124,23 @@ class _HomeTechState extends State<HomeTech> {
                                 height: s.height * 0.12,
                               ),
                               Center(
-                                child: Text(
-                                  "$name",
-                                  style: const TextStyle(
-                                      fontFamily: "Nunito",
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
-                                  softWrap: true,
-                                  textAlign: TextAlign.center,
-                                ),
+                                child: profile.name != null
+                                    ? Text(
+                                        "${profile.name}",
+                                        style: const TextStyle(
+                                            fontFamily: "Nunito",
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white),
+                                        softWrap: true,
+                                        textAlign: TextAlign.center,
+                                      )
+                                    : const SizedBox(
+                                        height: 18,
+                                        width: 18,
+                                        child: CircularProgressIndicator(
+                                          color: white,
+                                        )),
                               )
                             ],
                           ),
@@ -179,10 +198,11 @@ class _HomeTechState extends State<HomeTech> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => Profilesrc(
-                                              uid: "akdfa",
-                                              name: name,
-                                              img: "had",
-                                              username: username,
+                                              orgId: orgId,
+                                              uid: uid,
+                                              name: profile.name,
+                                              img: user?.photoURL,
+                                              techuid: uid,
                                             )),
                                   );
                                 },
@@ -428,14 +448,12 @@ class _HomeTechState extends State<HomeTech> {
                                                                         .push(
                                                                       context,
                                                                       MaterialPageRoute(
-                                                                        builder:
-                                                                            (context) =>
-                                                                                ReportSubmissionSrc(
-                                                                          username:
-                                                                              username,
-                                                                          techname:
-                                                                              name,
-                                                                        ),
+                                                                        builder: (context) => ReportSubmissionSrc(
+                                                                            techuid:
+                                                                                uid,
+                                                                            techname:
+                                                                                profile.name,
+                                                                            orgId: orgId),
                                                                       ),
                                                                     );
                                                                   },
@@ -492,7 +510,8 @@ class _HomeTechState extends State<HomeTech> {
                                                   MaterialPageRoute(
                                                       builder: (context) =>
                                                           Todaysreportsrc(
-                                                            username: username,
+                                                            techuid: techuid,
+                                                            orgId: orgId,
                                                           )));
                                             } else {
                                               // Update when the submit is flase
@@ -612,8 +631,9 @@ class _HomeTechState extends State<HomeTech> {
                                                                           MaterialPageRoute(
                                                                             builder: (context) =>
                                                                                 ReportSubmissionSrc(
-                                                                              username: username,
-                                                                              techname: name,
+                                                                              techuid: uid,
+                                                                              techname: profile.name,
+                                                                              orgId: orgId,
                                                                             ),
                                                                           ),
                                                                         );
@@ -779,7 +799,7 @@ class _HomeTechState extends State<HomeTech> {
                                                     .collection("organizations")
                                                     .doc("$orgId")
                                                     .collection("technician")
-                                                    .doc(username)
+                                                    .doc(techuid)
                                                     .collection("Vehicle")
                                                     .doc(techvdoc)
                                                     .get(),
@@ -1078,10 +1098,11 @@ class _HomeTechState extends State<HomeTech> {
                   context,
                   MaterialPageRoute(
                       builder: (context) => Profilesrc(
-                            uid: "akdfa",
-                            name: name,
-                            img: "had",
-                            username: username,
+                            orgId: orgId,
+                            uid: uid,
+                            name: profile.name,
+                            img: user?.photoURL,
+                            techuid: uid,
                           )),
                 );
               },
@@ -1118,323 +1139,14 @@ class _HomeTechState extends State<HomeTech> {
                     Padding(
                       padding:
                           EdgeInsets.symmetric(horizontal: s.width * 0.035),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          SizedBox(
-                            width: s.width * 0.1,
-                            height: s.width * 0.1,
-                          ),
-                          const Text(
-                            "Today's Program",
-                            style: TextStyle(
-                              fontFamily: "Nunito",
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                          Stack(
-                            children: [
-                              InkWell(
-                                onTap: () => showDialog(
-                                    context: context,
-                                    builder: (context) => Dialog(
-                                          child: Padding(
-                                            padding: EdgeInsets.symmetric(
-                                                vertical: s.height * 0.03,
-                                                horizontal: s.width * 0.02),
-                                            child:
-                                                FutureBuilder<DocumentSnapshot>(
-                                              future: fb
-                                                  .collection("organizations")
-                                                  .doc("$orgId")
-                                                  .collection("technician")
-                                                  .doc("$uid")
-                                                  .collection("Vehicle")
-                                                  .doc(techvdoc)
-                                                  .get(),
-                                              builder: (BuildContext context,
-                                                  AsyncSnapshot<
-                                                          DocumentSnapshot>
-                                                      snapshot) {
-                                                if (snapshot.hasError) {
-                                                  return const Text(
-                                                      "Something went wrong");
-                                                }
-
-                                                if (snapshot.hasData &&
-                                                    !snapshot.data!.exists) {
-                                                  return Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.min,
-                                                    children: [
-                                                      Padding(
-                                                        padding: EdgeInsets
-                                                            .symmetric(
-                                                                horizontal:
-                                                                    s.width *
-                                                                        0.02,
-                                                                vertical:
-                                                                    s.width *
-                                                                        0.02),
-                                                        child: Column(
-                                                          children: [
-                                                            const Text(
-                                                              "No Vehicle Assigned",
-                                                              style: TextStyle(
-                                                                  fontFamily:
-                                                                      "Montserrat",
-                                                                  fontSize: 17,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w700,
-                                                                  color: Colors
-                                                                      .blueGrey),
-                                                            ),
-                                                            const SizedBox(
-                                                              height: 10,
-                                                            ),
-                                                            Container(
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            25),
-                                                                color: white,
-                                                                boxShadow: [
-                                                                  BoxShadow(
-                                                                    offset:
-                                                                        const Offset(
-                                                                            2,
-                                                                            4),
-                                                                    blurRadius:
-                                                                        20,
-                                                                    color: secondbg
-                                                                        .withOpacity(
-                                                                            0.23),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                              clipBehavior:
-                                                                  Clip.hardEdge,
-                                                              child: Image.asset(
-                                                                  "assets/Icons/empty_garage.jpg"),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  );
-                                                }
-
-                                                if (snapshot.connectionState ==
-                                                    ConnectionState.done) {
-                                                  Map<String, dynamic> data =
-                                                      snapshot.data!.data()
-                                                          as Map<String,
-                                                              dynamic>;
-                                                  return Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.min,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      const Text(
-                                                        "Vehicle Status",
-                                                        style: TextStyle(
-                                                            fontFamily:
-                                                                "Montserrat",
-                                                            fontSize: 17,
-                                                            fontWeight:
-                                                                FontWeight.w600,
-                                                            color: bluebg),
-                                                      ),
-                                                      const SizedBox(
-                                                          height: 10),
-                                                      Container(
-                                                        height: s.width * 0.5,
-                                                        clipBehavior:
-                                                            Clip.hardEdge,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(15),
-                                                          color: redbg,
-                                                        ),
-                                                        child: Image.asset(
-                                                          'assets/gif/delivery.gif',
-                                                          fit: BoxFit.fill,
-                                                        ),
-                                                      ),
-                                                      const SizedBox(
-                                                        height: 10,
-                                                      ),
-                                                      Text(
-                                                        "${data["name"]}",
-                                                        style: const TextStyle(
-                                                          fontFamily:
-                                                              "Montserrat",
-                                                          fontSize: 18,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
-                                                      ),
-                                                      Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .end,
-                                                        children: [
-                                                          Column(
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .end,
-                                                            children: [
-                                                              Text(
-                                                                "${data["upTime"]}",
-                                                                style:
-                                                                    const TextStyle(
-                                                                  fontFamily:
-                                                                      "Montserrt",
-                                                                  fontSize: 12,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w300,
-                                                                ),
-                                                              ),
-                                                              Text(
-                                                                "${data["upDate"]}",
-                                                                style:
-                                                                    const TextStyle(
-                                                                  fontFamily:
-                                                                      "Montserrt",
-                                                                  fontSize: 12,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w300,
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          )
-                                                        ],
-                                                      ),
-                                                      const SizedBox(
-                                                        height: 10,
-                                                      ),
-                                                      Flexible(
-                                                          child: InkWell(
-                                                        onTap: () =>
-                                                            Navigator.pop(
-                                                                context),
-                                                        child: Container(
-                                                          height: 40,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        5),
-                                                            color: white,
-                                                            border: Border.all(
-                                                                color: bluebg),
-                                                          ),
-                                                          child: const Center(
-                                                              child: Text(
-                                                            "Got it!",
-                                                            style: TextStyle(
-                                                              fontFamily:
-                                                                  "Montserrat",
-                                                              fontSize: 16,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                              color: bluebg,
-                                                            ),
-                                                          )),
-                                                        ),
-                                                      ))
-                                                    ],
-                                                  );
-                                                }
-
-                                                return Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
-                                                  children: [
-                                                    Container(
-                                                      width:
-                                                          MediaQuery.of(context)
-                                                              .size
-                                                              .width,
-                                                      decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(25),
-                                                        color: white,
-                                                        boxShadow: [
-                                                          BoxShadow(
-                                                            offset:
-                                                                const Offset(
-                                                                    0, 10),
-                                                            blurRadius: 20,
-                                                            color: secondbg
-                                                                .withOpacity(
-                                                                    0.23),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      child: Padding(
-                                                        padding: EdgeInsets
-                                                            .symmetric(
-                                                                vertical:
-                                                                    s.width *
-                                                                        0.1),
-                                                        child: Center(
-                                                          child: SizedBox(
-                                                            width:
-                                                                s.width * 0.15,
-                                                            height:
-                                                                s.width * 0.15,
-                                                            child:
-                                                                const LoadingIndicator(
-                                                              indicatorType:
-                                                                  Indicator
-                                                                      .ballClipRotateMultiple,
-                                                              colors: [bluebg],
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            ),
-                                          ),
-                                        )),
-                                child: SizedBox(
-                                  width: s.width * 0.1,
-                                  height: s.width * 0.1,
-                                  child:
-                                      Image.asset("assets/Icons/scooter.png"),
-                                ),
-                              ),
-                              Positioned(
-                                  left: s.width * 0.08,
-                                  top: s.width * 0.005,
-                                  child: Container(
-                                    width: s.width * 0.02,
-                                    height: s.width * 0.02,
-                                    decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: limegreen),
-                                  ))
-                            ],
-                          ),
-                        ],
+                      child: const Text(
+                        "Today's Program",
+                        style: TextStyle(
+                          fontFamily: "Nunito",
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ],
