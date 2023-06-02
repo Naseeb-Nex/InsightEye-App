@@ -471,6 +471,7 @@ class _DetailingsrcState extends State<Detailingsrc> {
                               prospec: widget.prospec,
                               instadate: widget.instadate,
                               custdocname: widget.custdocname,
+                              orgId: widget.orgId,
                             ))),
                 child: Container(
                   width: 250,
@@ -523,6 +524,7 @@ class _DetailingsrcState extends State<Detailingsrc> {
                               prospec: widget.prospec,
                               instadate: widget.instadate,
                               custdocname: widget.custdocname,
+                              orgId: widget.orgId,
                             ))),
                 child: Container(
                   width: 250,
