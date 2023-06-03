@@ -9,6 +9,8 @@ import 'package:insighteye_app/constants/constants.dart';
 
 
 class OrgRegistrationSrc extends StatefulWidget {
+  const OrgRegistrationSrc({super.key});
+
   @override
   State<StatefulWidget> createState() {
     return _OrgRegistrationSrcState();
@@ -292,7 +294,7 @@ class _OrgRegistrationSrcState extends State<OrgRegistrationSrc> {
                                     state.errorText ?? '',
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
-                                        color: Theme.of(context).errorColor,
+                                        color: Theme.of(context).colorScheme.error,
                                         fontSize: 12,
                                         fontFamily: "Montserrat"),
                                   ),

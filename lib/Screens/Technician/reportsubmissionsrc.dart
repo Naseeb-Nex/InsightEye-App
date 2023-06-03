@@ -212,6 +212,7 @@ class _ReportSubmissionSrcState extends State<ReportSubmissionSrc> {
                                                               Todaysreportsrc(
                                                                 techuid: widget
                                                                     .techuid,
+                                                                    orgId: widget.orgId
                                                               )));
                                                 }).onError((error,
                                                             stackTrace) =>
@@ -648,13 +649,13 @@ class _ReportSubmissionSrcState extends State<ReportSubmissionSrc> {
                                                     const EdgeInsets.symmetric(
                                                         vertical: 5.0),
                                                 child: Vreportsubcard(
+                                                  orgId: widget.orgId,
                                                   name: vehicle[i]['name'],
                                                   vdocname: vehicle[i]
                                                       ['vdocname'],
                                                   docname: vehicle[i]
                                                       ['docname'],
-                                                  techuid: vehicle[i]
-                                                      ['techuid'],
+                                                  techuid: widget.techuid,
                                                   update: vehicle[i]['upDate'],
                                                   start: vehicle[i]['start'],
                                                   end: vehicle[i]['end'],

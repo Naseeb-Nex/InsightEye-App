@@ -1,4 +1,3 @@
-import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -21,6 +20,9 @@ class AuthMethods {
   // }
 
   //signup user
+
+  // TODO : Add to the Org Screen
+  
   Future<String> signUpUser({
     required String fname,
     required String pass,

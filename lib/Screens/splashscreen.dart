@@ -6,7 +6,7 @@ import 'package:insighteye_app/constants/constants.dart';
 
 
 class SplashScreen extends StatefulWidget {
-  SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({Key? key}) : super(key: key);
 
   @override
   _SplashScreenState createState() => _SplashScreenState();
@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(const Duration(milliseconds: 2000), () {
       setState(() {
         Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => AuthenticationWrapper()),
+            MaterialPageRoute(builder: (context) => const AuthenticationWrapper()),
             (route) => false);
       });
     });
@@ -39,12 +39,12 @@ class _SplashScreenState extends State<SplashScreen> {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            Theme.of(context).accentColor,
+            Theme.of(context).colorScheme.secondary,
             Theme.of(context).primaryColor
           ],
           begin: const FractionalOffset(0, 0),
           end: const FractionalOffset(1.0, 0.0),
-          stops: [0.0, 1.0],
+          stops: const [0.0, 1.0],
           tileMode: TileMode.clamp,
         ),
       ),

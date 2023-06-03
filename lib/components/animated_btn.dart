@@ -31,13 +31,12 @@ class AnimatedBtn extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween
-                  ,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       "Discover",
-                      style: Theme.of(context).textTheme.button,
+                      style: Theme.of(context).textTheme.labelLarge,
                     ),
                     const Icon(CupertinoIcons.arrow_right),
                   ],

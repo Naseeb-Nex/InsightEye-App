@@ -12,11 +12,11 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
             errorStyle: TextStyle(height: 0),
           ),
         ),
-        home: SplashScreen(),
+        home: const SplashScreen(),
       ),
     );
   }

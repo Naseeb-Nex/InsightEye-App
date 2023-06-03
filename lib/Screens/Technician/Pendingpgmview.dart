@@ -81,7 +81,9 @@ class _PendingpgmviewState extends State<Pendingpgmview> {
                   physics: const BouncingScrollPhysics(),
                   child: StreamBuilder<QuerySnapshot>(
                       stream: FirebaseFirestore.instance
-                          .collection('Technician')
+                          .collection("organizations")
+                          .doc("${widget.orgId}")
+                          .collection('technician')
                           .doc(widget.techuid)
                           .collection("Pendingpgm")
                           .snapshots(),

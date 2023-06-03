@@ -103,7 +103,9 @@ class _TechreportcardState extends State<Techreportcard> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "${widget.name}",
+                            widget.name == null
+                                ? "No Profile"
+                                : "${widget.name}",
                             style: const TextStyle(
                                 fontFamily: "Montserrat",
                                 fontSize: 16,
@@ -166,14 +168,10 @@ class _TechreportcardState extends State<Techreportcard> {
                                     .where((i) => i['status'] == 'assigned')
                                     .toList();
 
-                                initState() {
-                                  setState(() {
                                     a = assigned.length;
                                     p = pendingpgms.length;
                                     pro = processingpgm.length;
                                     c = completedpgm.length;
-                                  });
-                                }
 
                                 return Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,

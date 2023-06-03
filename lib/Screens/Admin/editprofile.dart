@@ -394,21 +394,6 @@ class _EditprofileState extends State<Editprofile> {
       await firebaseFirestore
       .collection("organizations")
           .doc("${widget.orgId}")
-          .collection("users")
-          .doc("${widget.uid}")
-          .update({
-            'name': nameController.text,
-            'designation': designationController.text,
-            'phn1': phn1Controller.text,
-            'phn2': phn2Controller.text,
-            'location': locationController.text
-          })
-          .then((value) => print("Successfully UPdated profile"))
-          .catchError((error) => print("Failed to add user: $error"));
-
-      await firebaseFirestore
-      .collection("organizations")
-          .doc("${widget.orgId}")
           .collection("technician")
           .doc(widget.techuid)
           .update({

@@ -65,9 +65,9 @@ class _IntroScreenState extends State<IntroScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Column(
+                  const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       Text(
                         "Insight",
                         style: TextStyle(
@@ -116,7 +116,7 @@ class _IntroScreenState extends State<IntroScreen> {
                             isShowSignInDialog = true;
                           });
                           Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => LoginSrc()));
+                          MaterialPageRoute(builder: (context) => const LoginSrc()));
                         },
                       );
                       

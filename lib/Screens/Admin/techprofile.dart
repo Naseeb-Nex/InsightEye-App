@@ -441,7 +441,6 @@ class _TechprofilesrcState extends State<Techprofilesrc> {
   setupsrc() async {
     DateTime now = DateTime.now();
     String mnth = DateFormat('MM y').format(now);
-    print(mnth);
 
     FirebaseFirestore.instance
         .collection("organizations")
@@ -675,13 +674,6 @@ class _RemovetechalertState extends State<Removetechalert> {
     User? user = _auth.currentUser;
     if (user!.email == widget.emailid) {
       await user.delete();
-      await fb
-          .collection("organizations")
-          .doc("${widget.orgId}")
-          .collection("users")
-          .doc(user.uid)
-          .delete()
-          .catchError((onError) => print("user not deletd"));
 
       await fb
           .collection("organizations")

@@ -146,7 +146,8 @@ class _PgmcardwrapperState extends State<Pgmcardwrapper> {
     return StreamBuilder<QuerySnapshot>(
         // TODO : this code is not updating
         // we want to update this code
-        stream: FirebaseFirestore.instance.collection('Programs').snapshots(),
+        stream: FirebaseFirestore.instance.collection("organizations")
+          .doc("${widget.orgId}").collection('Programs').snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
             print('Something went Wrong');

@@ -1331,7 +1331,7 @@ class _HomeAdminState extends State<HomeAdmin> {
                                           stream: fb
                                               .collection("organizations")
                                               .doc("$orgId")
-                                              .collection("Employee")
+                                              .collection("technician")
                                               .snapshots(),
                                           builder: (BuildContext context,
                                               AsyncSnapshot<QuerySnapshot>
@@ -1372,8 +1372,9 @@ class _HomeAdminState extends State<HomeAdmin> {
                                                     child: Techreportcard(
                                                       name: techprofile[i]
                                                           ['name'],
-                                                      username: techprofile[i]
-                                                          ['username'],
+                                                      techuid: techprofile[i]
+                                                          ['uid'],
+                                                      orgId: orgId,
                                                     ),
                                                   )
                                                 ]
@@ -1628,7 +1629,7 @@ class Techcardspace extends StatelessWidget {
         stream: fb
             .collection("organizations")
             .doc("$orgId")
-            .collection('Technician')
+            .collection('technician')
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {}
@@ -1660,7 +1661,7 @@ class Techcardspace extends StatelessWidget {
                 orgId: orgId,
                 name: techprofile[i]['name'],
                 img: techprofile[i]['pic'],
-                username: techprofile[i]['username'],
+                techuid: techprofile[i]['uid'],
                 uid: techprofile[i]['uid'],
               );
             },
@@ -1674,9 +1675,9 @@ class Techcard extends StatefulWidget {
   String? name;
   String? img;
   String? uid;
-  String? username;
+  String? techuid;
   String? orgId;
-  Techcard({Key? key, this.name, this.img, this.uid, this.username, this.orgId})
+  Techcard({Key? key, this.name, this.img, this.uid, this.techuid, this.orgId})
       : super(key: key);
 
   @override
@@ -1714,7 +1715,7 @@ class _TechcardState extends State<Techcard> {
                 orgId: widget.orgId,
                 name: widget.name,
                 img: widget.img,
-                username: widget.username,
+                techuid: widget.techuid,
                 uid: widget.uid,
               ),
             )),
@@ -1743,8 +1744,9 @@ class _TechcardState extends State<Techcard> {
                         builder: (context) => Techprofilesrc(
                           name: widget.name,
                           img: widget.img,
-                          username: widget.username,
-                          uid: widget.uid,
+                          techuid: widget.techuid,
+                          uid: widget.techuid,
+                          orgId: widget.orgId,
                         ),
                       ),
                     ),
@@ -1764,7 +1766,7 @@ class _TechcardState extends State<Techcard> {
                 Center(
                   child: FittedBox(
                     child: Text(
-                      "${widget.name}",
+                      widget.name == null ? "No Profile" : "${widget.name}",
                       style: const TextStyle(
                         fontFamily: "Nunito",
                         fontSize: 18,
@@ -1806,8 +1808,8 @@ class _TechcardState extends State<Techcard> {
                         stream: fb
                             .collection("organizations")
                             .doc("${widget.orgId}")
-                            .collection('Technician')
-                            .doc(widget.username)
+                            .collection('technician')
+                            .doc(widget.techuid)
                             .collection("Assignedpgm")
                             .snapshots(),
                         builder: (BuildContext context,
@@ -1873,8 +1875,8 @@ class _TechcardState extends State<Techcard> {
                         stream: fb
                             .collection("organizations")
                             .doc("${widget.orgId}")
-                            .collection('Technician')
-                            .doc(widget.username)
+                            .collection('technician')
+                            .doc(widget.techuid)
                             .collection("Completedpgm")
                             .doc("Day")
                             .collection(cday)
@@ -1942,8 +1944,8 @@ class _TechcardState extends State<Techcard> {
                         stream: fb
                             .collection("organizations")
                             .doc("${widget.orgId}")
-                            .collection('Technician')
-                            .doc(widget.username)
+                            .collection('technician')
+                            .doc(widget.techuid)
                             .collection("Pendingpgm")
                             .snapshots(),
                         builder: (BuildContext context,
@@ -2009,8 +2011,8 @@ class _TechcardState extends State<Techcard> {
                         stream: fb
                             .collection("organizations")
                             .doc("${widget.orgId}")
-                            .collection('Technician')
-                            .doc(widget.username)
+                            .collection('technician')
+                            .doc(widget.techuid)
                             .collection("Processingpgm")
                             .snapshots(),
                         builder: (BuildContext context,

@@ -622,6 +622,7 @@ class _AssignedpgmcardState extends State<Assignedpgmcard> {
                                                     MaterialPageRoute(
                                                         builder: (context) =>
                                                             Editassignedpgm(
+                                                              orgId: widget.orgId,
                                                               name: widget.name,
                                                               address: widget
                                                                   .address,

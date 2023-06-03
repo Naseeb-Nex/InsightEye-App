@@ -8,7 +8,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/services.dart';
 import 'package:insighteye_app/Screens/Auth/firebase_auth/storage_methods.dart';
 
-import 'package:insighteye_app/Screens/models/user_model.dart';
 import 'package:insighteye_app/screens/Technician/hometech.dart';
 
 import 'package:image_picker/image_picker.dart';
@@ -400,22 +399,11 @@ class _CreateProfileState extends State<CreateProfile> {
   }
 
   void uploadData() async {
-    
     final user = FirebaseAuth.instance.currentUser;
 
     if (_formKey.currentState!.validate()) {
       String photoUrl = await StorageMethods()
           .uploadImageToStorage('profilePics', _image!, false);
-
-      UserModel profile = UserModel(
-        address: addressController.text,
-        name: nameController.text,
-        designation: designationController.text,
-        phn1: phn1Controller.text,
-        phn2: phn2Controller.text,
-        location: locationController.text,
-        imgUrl: photoUrl,
-      );
 
       if (user != null) {
         // Updated address
@@ -427,8 +415,15 @@ class _CreateProfileState extends State<CreateProfile> {
           .doc("${widget.orgId}")
           .collection("technician")
           .doc("${user?.uid}")
-          .update(profile.toMap())
-          .then((value) {
+          .update({
+        "name": nameController.text,
+        "address": addressController.text,
+        "designation": designationController.text,
+        "phn1": phn1Controller.text,
+        "phn2": phn2Controller.text,
+        "location": locationController.text,
+        "imgUrl": photoUrl,
+      }).then((value) {
         Fluttertoast.showToast(msg: "Profile Created Successfully");
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => HomeTech()));
