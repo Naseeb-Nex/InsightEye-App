@@ -6,8 +6,6 @@ import 'package:insighteye_app/Screens/homeWrapper.dart';
 import 'package:insighteye_app/components/styles.dart';
 import 'package:insighteye_app/constants/constants.dart';
 
-
-
 class OrgRegistrationSrc extends StatefulWidget {
   const OrgRegistrationSrc({super.key});
 
@@ -61,7 +59,8 @@ class _OrgRegistrationSrcState extends State<OrgRegistrationSrc> {
       address: _addressController.text,
     );
 
-    if (res == "success") {
+    if (res == "Your Organization registered") {
+      // ignore: use_build_context_synchronously
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(
             builder: (context) => const HomeWrapper(),
@@ -76,7 +75,6 @@ class _OrgRegistrationSrcState extends State<OrgRegistrationSrc> {
       setState(() {
         _isLoading = false;
       });
-
     }
   }
 
@@ -87,7 +85,6 @@ class _OrgRegistrationSrcState extends State<OrgRegistrationSrc> {
       ),
     );
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -106,7 +103,6 @@ class _OrgRegistrationSrcState extends State<OrgRegistrationSrc> {
                     key: _formKey,
                     child: Column(
                       children: [
-
                         // Full Name Text Feild
                         TextFormField(
                           controller: _fullnameController,
@@ -114,8 +110,7 @@ class _OrgRegistrationSrcState extends State<OrgRegistrationSrc> {
                             _fullnameController.text = value!;
                           },
                           textInputAction: TextInputAction.next,
-                          decoration: Styles().SimpleInputDec(
-                              'Full Name'),
+                          decoration: Styles().SimpleInputDec('Full Name'),
                           validator: (value) {
                             if (value!.isEmpty) {
                               return ("Please enter the Full Name");
@@ -137,8 +132,8 @@ class _OrgRegistrationSrcState extends State<OrgRegistrationSrc> {
                             _orgnameController.text = value!;
                           },
                           textInputAction: TextInputAction.next,
-                          decoration: Styles().SimpleInputDec(
-                              'Orgnization Name'),
+                          decoration:
+                              Styles().SimpleInputDec('Orgnization Name'),
                           validator: (value) {
                             if (value!.isEmpty) {
                               return ("Please enter the Orgnization Name");
@@ -158,8 +153,8 @@ class _OrgRegistrationSrcState extends State<OrgRegistrationSrc> {
                             _orgtypeController.text = value!;
                           },
                           textInputAction: TextInputAction.next,
-                          decoration: Styles().SimpleInputDec(
-                              'Orgnization Type'),
+                          decoration:
+                              Styles().SimpleInputDec('Orgnization Type'),
                           validator: (value) {
                             if (value!.isEmpty) {
                               return ("Please enter the Orgnization Type");
@@ -179,8 +174,8 @@ class _OrgRegistrationSrcState extends State<OrgRegistrationSrc> {
                             _addressController.text = value!;
                           },
                           textInputAction: TextInputAction.next,
-                          decoration: Styles().SimpleInputDec(
-                              'Organization Address'),
+                          decoration:
+                              Styles().SimpleInputDec('Organization Address'),
                           validator: (value) {
                             if (value!.isEmpty) {
                               return ("Please enter the Organization Address");
@@ -199,8 +194,7 @@ class _OrgRegistrationSrcState extends State<OrgRegistrationSrc> {
                             _phnController.text = value!;
                           },
                           textInputAction: TextInputAction.next,
-                          decoration: Styles().SimpleInputDec(
-                              "Mobile Number"),
+                          decoration: Styles().SimpleInputDec("Mobile Number"),
                           keyboardType: TextInputType.phone,
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -222,8 +216,7 @@ class _OrgRegistrationSrcState extends State<OrgRegistrationSrc> {
                           onSaved: (value) {
                             _emailController.text = value!;
                           },
-                          decoration: Styles().SimpleInputDec(
-                              "E-mail address"),
+                          decoration: Styles().SimpleInputDec("E-mail address"),
                           keyboardType: TextInputType.emailAddress,
                           autofocus: false,
                           validator: (value) {
@@ -252,11 +245,14 @@ class _OrgRegistrationSrcState extends State<OrgRegistrationSrc> {
                           },
                           textInputAction: TextInputAction.done,
                           obscureText: true,
-                          decoration: Styles().SimpleInputDec(
-                              "Password*"),
+                          decoration: Styles().SimpleInputDec("Password*"),
                           validator: (val) {
+                            RegExp regex = RegExp(r'^.{6,}$');
                             if (val!.isEmpty) {
-                              return "Please enter your password";
+                              return ("Password is required for login");
+                            }
+                            if (!regex.hasMatch(val)) {
+                              return ("Enter Valid Password(Min. 6 Character)");
                             }
                             return null;
                           },
@@ -294,7 +290,8 @@ class _OrgRegistrationSrcState extends State<OrgRegistrationSrc> {
                                     state.errorText ?? '',
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
-                                        color: Theme.of(context).colorScheme.error,
+                                        color:
+                                            Theme.of(context).colorScheme.error,
                                         fontSize: 12,
                                         fontFamily: "Montserrat"),
                                   ),
@@ -312,8 +309,7 @@ class _OrgRegistrationSrcState extends State<OrgRegistrationSrc> {
                         ),
                         const SizedBox(height: 20.0),
                         Container(
-                          decoration:
-                              Styles().buttonBoxDecoration(context),
+                          decoration: Styles().buttonBoxDecoration(context),
                           child: ElevatedButton(
                             style: Styles().buttonStyle(),
                             child: Padding(
