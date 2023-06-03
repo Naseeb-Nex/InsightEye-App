@@ -46,18 +46,17 @@ class Vreportsubcard extends StatefulWidget {
 
 class _VreportsubcardState extends State<Vreportsubcard> {
   int dis = 0;
-  @override
-  void initState() {
-    super.initState();
-
-    if (widget.start != null && widget.end != null) {
-      dis = int.parse("${widget.end}") - int.parse("${widget.start}");
-    }
-  }
 
   @override
   Widget build(context) {
     Size s = MediaQuery.of(context).size;
+
+    if (widget.start != null && widget.end != null) {
+      setState(() {
+        dis = int.parse("${widget.end}") - int.parse("${widget.start}");
+      });
+    }
+    
     return Container(
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
@@ -203,8 +202,8 @@ class _VreportsubcardState extends State<Vreportsubcard> {
                 Center(
                   child: widget.end != null
                       ? Padding(
-                          padding:
-                              const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 5, vertical: 5),
                           child: Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
@@ -339,11 +338,12 @@ class _VreportsubcardState extends State<Vreportsubcard> {
                                           decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(2),
-                                              gradient: const LinearGradient(colors: [
-                                                Colors.green,
-                                                Colors.orangeAccent,
-                                                Colors.redAccent
-                                              ])),
+                                              gradient: const LinearGradient(
+                                                  colors: [
+                                                    Colors.green,
+                                                    Colors.orangeAccent,
+                                                    Colors.redAccent
+                                                  ])),
                                         ),
                                       ),
                                       Column(
@@ -399,7 +399,8 @@ class VehicleinfoDialog extends StatefulWidget {
   String? vdocname;
   String? orgId;
 
-  VehicleinfoDialog({super.key, 
+  VehicleinfoDialog({
+    super.key,
     this.techuid,
     this.docname,
     this.name,
@@ -682,7 +683,7 @@ class _VehicleinfoDialogState extends State<VehicleinfoDialog> {
 
       // history added
       await fb
-      .collection("organizations")
+          .collection("organizations")
           .doc("${widget.orgId}")
           .collection("GarageUsage")
           .doc(usagedocname)
@@ -691,7 +692,7 @@ class _VehicleinfoDialogState extends State<VehicleinfoDialog> {
 
       // Vehicle log
       await fb
-      .collection("organizations")
+          .collection("organizations")
           .doc("${widget.orgId}")
           .collection("Garage")
           .doc(widget.vdocname)
@@ -702,7 +703,7 @@ class _VehicleinfoDialogState extends State<VehicleinfoDialog> {
 
       // report added
       await fb
-      .collection("organizations")
+          .collection("organizations")
           .doc("${widget.orgId}")
           .collection("Reports")
           .doc(year)
@@ -759,7 +760,8 @@ class EditVehicleusage extends StatefulWidget {
   String? vdocname;
   String? orgId;
 
-  EditVehicleusage({super.key, 
+  EditVehicleusage({
+    super.key,
     this.techuid,
     this.docname,
     this.start,
@@ -867,8 +869,8 @@ class _EditVehicleusageState extends State<EditVehicleusage> {
                 SizedBox(
                   height: s.height * 0.01,
                 ),
-                const Text(
-                  "Closing KM",
+                Text(
+                  "Closing KM${widget.orgId}",
                   style: TextStyle(
                     fontFamily: "Montserrat",
                     fontSize: 16,
@@ -1053,7 +1055,7 @@ class _EditVehicleusageState extends State<EditVehicleusage> {
 
       // history added
       await fb
-      .collection("organizations")
+          .collection("organizations")
           .doc("${widget.orgId}")
           .collection("GarageUsage")
           .doc(usagedocname)
@@ -1062,7 +1064,7 @@ class _EditVehicleusageState extends State<EditVehicleusage> {
 
       // Vehicle log
       await fb
-      .collection("organizations")
+          .collection("organizations")
           .doc("${widget.orgId}")
           .collection("Garage")
           .doc(widget.vdocname)
@@ -1073,7 +1075,7 @@ class _EditVehicleusageState extends State<EditVehicleusage> {
 
       // report Update
       await fb
-      .collection("organizations")
+          .collection("organizations")
           .doc("${widget.orgId}")
           .collection("Reports")
           .doc(year)
