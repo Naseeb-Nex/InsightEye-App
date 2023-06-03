@@ -55,7 +55,7 @@ class _OrgRegistrationSrcState extends State<OrgRegistrationSrc> {
       email: _emailController.text,
       pass: _passwordController.text,
       orgtype: _orgtypeController.text,
-      phn: _orgtypeController.text,
+      phn: _phnController.text,
       address: _addressController.text,
     );
 
