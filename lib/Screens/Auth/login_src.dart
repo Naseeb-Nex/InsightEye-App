@@ -302,7 +302,7 @@ class _LoginSrcState extends State<LoginSrc> {
           case "invalid-email":
             errorMessage = "Your email address appears to be malformed.";
             break;
-          case "wrong-password":
+          case "invalid-password":
             errorMessage = "Your password is wrong.";
             break;
           case "user-not-found":
