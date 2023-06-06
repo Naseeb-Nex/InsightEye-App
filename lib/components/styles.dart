@@ -1,21 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
+import '../constants/constants.dart';
+
 class Styles {
   // ignore: non_constant_identifier_names
   InputDecoration SimpleInputDec([String lableText = ""]) {
     return InputDecoration(
       labelText: lableText,
-      fillColor: Colors.white,
+      labelStyle: const TextStyle(
+          fontFamily: "Montserrat",
+          fontSize: 15,
+          color: white,
+          fontWeight: FontWeight.w600),
+      fillColor: trans,
       filled: true,
       errorStyle: const TextStyle(fontFamily: "Montserrat"),
       contentPadding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
       focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15.0),
-          borderSide: const BorderSide(color: Colors.grey)),
+          borderSide: const BorderSide(color: white)),
       enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15.0),
-          borderSide: BorderSide(color: Colors.grey.shade400)),
+          borderSide: const BorderSide(color: Colors.white30)),
       errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15.0),
           borderSide: const BorderSide(color: Color(0XFFff0a54), width: 2.0)),
