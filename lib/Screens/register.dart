@@ -197,7 +197,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               children: [
                 Image.asset("assets/Icons/staff-head.png", width: s.width),
                 Padding(
-                  padding: EdgeInsets.only(top: s.height * 0.07),
+                  padding: EdgeInsets.only(top: s.height * 0.1),
                   child: const Center(
                     child: Text(
                       "Staff Registration",
@@ -220,7 +220,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       width: 40,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
-                        color: const Color(0XFFF3FFFE).withOpacity(0.2),
+                        color: const Color(0XFFF3FFFE).withOpacity(0.1),
                       ),
                       child: const Center(
                           child: Icon(
