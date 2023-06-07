@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import 'package:insighteye_app/Screens/Auth/org_reg_src.dart';
+import 'package:insighteye_app/Screens/Auth/orgdetails_src.dart';
 import 'package:insighteye_app/Screens/homeWrapper.dart';
 
 import 'package:insighteye_app/components/styles.dart';
@@ -258,7 +258,7 @@ class _LoginSrcState extends State<LoginSrc> {
                                                 context,
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        const OrgRegistrationSrc()));
+                                                        const OrgDetailsScreen()));
                                           },
                                         style: const TextStyle(
                                           fontWeight: FontWeight.bold,

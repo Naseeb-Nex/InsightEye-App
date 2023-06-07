@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
         ],
         title: 'InsightEye',
         theme: ThemeData(
-          primaryColor: primaryColor,
+          primaryColor: techbg,
           colorScheme:
               ColorScheme.fromSwatch().copyWith(secondary: accentColor),
           primarySwatch: Colors.grey,

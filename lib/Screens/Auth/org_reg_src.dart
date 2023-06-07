@@ -3,11 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:insighteye_app/Screens/Auth/firebase_auth/auth_methods.dart';
 import 'package:insighteye_app/Screens/Auth/login_src.dart';
 import 'package:insighteye_app/Screens/homeWrapper.dart';
-import 'package:insighteye_app/components/styles.dart';
 import 'package:insighteye_app/constants/constants.dart';
 
+// ignore: must_be_immutable
 class OrgRegistrationSrc extends StatefulWidget {
-  const OrgRegistrationSrc({super.key});
+  String? orgname;
+  String? orgtype;
+  String? orgAddress;
+
+  OrgRegistrationSrc({super.key, this.orgname, this.orgtype, this.orgAddress});
 
   @override
   State<StatefulWidget> createState() {
@@ -27,36 +31,33 @@ class _OrgRegistrationSrcState extends State<OrgRegistrationSrc> {
   final _formKey = GlobalKey<FormState>();
 
   bool _isLoading = false;
-  final TextEditingController _orgnameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _orgtypeController = TextEditingController();
-  final TextEditingController _addressController = TextEditingController();
+  final TextEditingController _cpasswordController = TextEditingController();
   final TextEditingController _phnController = TextEditingController();
 
   @override
   void dispose() {
     super.dispose();
     _fullnameController.dispose();
-    _orgnameController.dispose();
     _emailController.dispose();
-    _orgtypeController.dispose();
     _passwordController.dispose();
-    _addressController.dispose();
+    _cpasswordController.dispose();
     _phnController.dispose();
   }
 
   void signUpUser() async {
+    print("wokring");
     setState(() {
       _isLoading = true;
     });
     String res = await AuthMethods().signUpUser(
       fname: _fullnameController.text,
-      orgname: _orgnameController.text,
+      orgname: "${widget.orgname}",
       email: _emailController.text,
       pass: _passwordController.text,
-      orgtype: _orgtypeController.text,
+      orgtype: "${widget.orgtype}",
       phn: _phnController.text,
-      address: _addressController.text,
+      address: "${widget.orgAddress}",
     );
 
     if (res == "Your Organization registered") {
@@ -88,298 +89,370 @@ class _OrgRegistrationSrcState extends State<OrgRegistrationSrc> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              margin: const EdgeInsets.fromLTRB(25, 50, 25, 10),
-              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-              alignment: Alignment.center,
-              child: Column(
-                children: [
-                  Form(
-                    key: _formKey,
+    //Responsive Size
+    Size s = MediaQuery.of(context).size;
+
+    return Container(
+      width: s.width,
+      height: s.height,
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(
+            'assets/Images/bg.png',
+          ),
+          fit: BoxFit.fill,
+        ),
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: SafeArea(
+            child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Column(
+            children: [
+              SizedBox(
+                height: s.height * 0.1382,
+              ),
+              Center(
+                child: Container(
+                  width: s.width * 0.9,
+                  height: s.height * 0.6771,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(41),
+                      color: const Color(0xFFFEFEFF)),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: s.width * 0.0864),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        // Full Name Text Feild
-                        TextFormField(
-                          controller: _fullnameController,
-                          onSaved: (value) {
-                            _fullnameController.text = value!;
-                          },
-                          textInputAction: TextInputAction.next,
-                          decoration: Styles().SimpleInputDec('Full Name'),
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return ("Please enter the Full Name");
-                            }
-                            return null;
-                          },
-                          style: const TextStyle(
-                            fontFamily: "Montserrat",
-                            fontSize: 15,
-                          ),
+                        SizedBox(
+                          height: s.height * 0.0529,
                         ),
-                        const SizedBox(
-                          height: 30,
+                        const Text(
+                          'Admin Login',
+                          style: TextStyle(
+                              fontSize: 24,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: "Montserrat"),
                         ),
-                        // Oragnization Name Text Feild
-                        TextFormField(
-                          controller: _orgnameController,
-                          onSaved: (value) {
-                            _orgnameController.text = value!;
-                          },
-                          textInputAction: TextInputAction.next,
-                          decoration:
-                              Styles().SimpleInputDec('Orgnization Name'),
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return ("Please enter the Orgnization Name");
-                            }
-                            return null;
-                          },
-                          style: const TextStyle(
-                            fontFamily: "Montserrat",
-                            fontSize: 15,
-                          ),
+                        SizedBox(
+                          height: s.height * 0.0367,
                         ),
-                        const SizedBox(height: 20.0),
-                        // Oragnization Type Text Feild
-                        TextFormField(
-                          controller: _orgtypeController,
-                          onSaved: (value) {
-                            _orgtypeController.text = value!;
-                          },
-                          textInputAction: TextInputAction.next,
-                          decoration:
-                              Styles().SimpleInputDec('Orgnization Type'),
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return ("Please enter the Orgnization Type");
-                            }
-                            return null;
-                          },
-                          style: const TextStyle(
-                            fontFamily: "Montserrat",
-                            fontSize: 15,
-                          ),
-                        ),
-                        const SizedBox(height: 20.0),
-                        // Organization Address Text Feild
-                        TextFormField(
-                          controller: _addressController,
-                          onSaved: (value) {
-                            _addressController.text = value!;
-                          },
-                          textInputAction: TextInputAction.next,
-                          decoration:
-                              Styles().SimpleInputDec('Organization Address'),
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return ("Please enter the Organization Address");
-                            }
-                            return null;
-                          },
-                          style: const TextStyle(
-                            fontFamily: "Montserrat",
-                            fontSize: 15,
-                          ),
-                        ),
-                        const SizedBox(height: 20.0),
-                        TextFormField(
-                          controller: _phnController,
-                          onSaved: (value) {
-                            _phnController.text = value!;
-                          },
-                          textInputAction: TextInputAction.next,
-                          decoration: Styles().SimpleInputDec("Mobile Number"),
-                          keyboardType: TextInputType.phone,
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return ("Phone Number feild can't be empty");
-                            } else if (value.length != 10) {
-                              return ("invalid Phone Number");
-                            }
-                            return null;
-                          },
-                          style: const TextStyle(
-                            fontFamily: "Montserrat",
-                            fontSize: 15,
-                          ),
-                        ),
-                        const SizedBox(height: 20.0),
-                        // Email
-                        TextFormField(
-                          controller: _emailController,
-                          onSaved: (value) {
-                            _emailController.text = value!;
-                          },
-                          decoration: Styles().SimpleInputDec("E-mail address"),
-                          keyboardType: TextInputType.emailAddress,
-                          autofocus: false,
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return ("Please Enter Your Email");
-                            }
-                            // reg expression for email validation
-                            if (!RegExp(
-                                    "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
-                                .hasMatch(value)) {
-                              return ("Please Enter a valid email");
-                            }
-                            return null;
-                          },
-                          textInputAction: TextInputAction.next,
-                          style: const TextStyle(
-                            fontFamily: "Montserrat",
-                            fontSize: 15,
-                          ),
-                        ),
-                        const SizedBox(height: 20.0),
-                        TextFormField(
-                          controller: _passwordController,
-                          onSaved: (value) {
-                            _passwordController.text = value!;
-                          },
-                          textInputAction: TextInputAction.done,
-                          obscureText: true,
-                          decoration: Styles().SimpleInputDec("Password*"),
-                          validator: (val) {
-                            RegExp regex = RegExp(r'^.{6,}$');
-                            if (val!.isEmpty) {
-                              return ("Password is required for login");
-                            }
-                            if (!regex.hasMatch(val)) {
-                              return ("Enter Valid Password(Min. 6 Character)");
-                            }
-                            return null;
-                          },
-                          style: const TextStyle(
-                            fontFamily: "Montserrat",
-                            fontSize: 15,
-                          ),
-                        ),
-                        const SizedBox(height: 15.0),
-                        FormField<bool>(
-                          builder: (state) {
-                            return Column(
-                              children: <Widget>[
-                                Row(
-                                  children: <Widget>[
-                                    Checkbox(
-                                        value: checkboxValue,
-                                        onChanged: (value) {
-                                          setState(() {
-                                            checkboxValue = value!;
-                                            state.didChange(value);
-                                          });
-                                        }),
-                                    const Text(
-                                      "I accept all terms and conditions.",
-                                      style: TextStyle(
-                                          color: Colors.grey,
-                                          fontFamily: "Montserrat"),
-                                    ),
+                        Form(
+                          key: _formKey,
+                            child: Column(
+                          children: [
+                            TextFormField(
+                              autofocus: false,
+                              controller: _fullnameController,
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return ("Name can't be Empty");
+                                }
+                                return null;
+                              },
+                              onSaved: (value) {
+                                _fullnameController.text = value!;
+                              },
+                              textInputAction: TextInputAction.next,
+                              decoration: InputDecoration(
+                                labelText: "Admin Name",
+                                fillColor: Colors.white,
+                                filled: true,
+                                errorStyle:
+                                    const TextStyle(fontFamily: "Montserrat"),
+                                contentPadding:
+                                    const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    borderSide:
+                                        const BorderSide(color: Colors.grey)),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    borderSide: BorderSide(
+                                        color: Colors.grey.shade400)),
+                                errorBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    borderSide: const BorderSide(
+                                        color: Color(0XFFff0a54), width: 2.0)),
+                                focusedErrorBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    borderSide: const BorderSide(
+                                        color: Colors.red, width: 2.0)),
+                              ),
+                              style: const TextStyle(
+                                fontFamily: "Montserrat",
+                                fontSize: 15,
+                              ),
+                            ),
+                            SizedBox(height: s.height * 0.0269),
+                            TextFormField(
+                              controller: _phnController,
+                              onSaved: (value) {
+                                _phnController.text = value!;
+                              },
+                              keyboardType: TextInputType.phone,
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return ("Phone Number feild can't be empty");
+                                } else if (value.length != 10) {
+                                  return ("invalid Phone Number");
+                                }
+                                return null;
+                              },
+                              textInputAction: TextInputAction.next,
+                              decoration: InputDecoration(
+                                labelText: "Admin Ph:",
+                                fillColor: Colors.white,
+                                filled: true,
+                                errorStyle:
+                                    const TextStyle(fontFamily: "Montserrat"),
+                                contentPadding:
+                                    const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    borderSide:
+                                        const BorderSide(color: Colors.grey)),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    borderSide: BorderSide(
+                                        color: Colors.grey.shade400)),
+                                errorBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    borderSide: const BorderSide(
+                                        color: Color(0XFFff0a54), width: 2.0)),
+                                focusedErrorBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    borderSide: const BorderSide(
+                                        color: Colors.red, width: 2.0)),
+                              ),
+                              style: const TextStyle(
+                                fontFamily: "Montserrat",
+                                fontSize: 15,
+                              ),
+                            ),
+                            SizedBox(height: s.height * 0.0269),
+                            TextFormField(
+                              controller: _emailController,
+                              onSaved: (value) {
+                                _emailController.text = value!;
+                              },
+                              keyboardType: TextInputType.emailAddress,
+                              autofocus: false,
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return ("Please Enter Your Email");
+                                }
+                                // reg expression for email validation
+                                if (!RegExp(
+                                        "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
+                                    .hasMatch(value)) {
+                                  return ("Please Enter a valid email");
+                                }
+                                return null;
+                              },
+                              textInputAction: TextInputAction.next,
+                              decoration: InputDecoration(
+                                labelText: "Admin Email",
+                                fillColor: Colors.white,
+                                filled: true,
+                                errorStyle:
+                                    const TextStyle(fontFamily: "Montserrat"),
+                                contentPadding:
+                                    const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    borderSide:
+                                        const BorderSide(color: Colors.grey)),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    borderSide: BorderSide(
+                                        color: Colors.grey.shade400)),
+                                errorBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    borderSide: const BorderSide(
+                                        color: Color(0XFFff0a54), width: 2.0)),
+                                focusedErrorBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    borderSide: const BorderSide(
+                                        color: Colors.red, width: 2.0)),
+                              ),
+                              style: const TextStyle(
+                                fontFamily: "Montserrat",
+                                fontSize: 15,
+                              ),
+                            ),
+                            SizedBox(
+                              height: s.height * 0.0269,
+                            ),
+                            TextFormField(
+                              controller: _passwordController,
+                              onSaved: (value) {
+                                _passwordController.text = value!;
+                              },
+                              textInputAction: TextInputAction.next,
+                              obscureText: true,
+                              validator: (val) {
+                                RegExp regex = RegExp(r'^.{6,}$');
+                                if (val!.isEmpty) {
+                                  return ("Password is required for login");
+                                }
+                                if (!regex.hasMatch(val)) {
+                                  return ("Enter Valid Password(Min. 6 Character)");
+                                }
+                                return null;
+                              },
+                              decoration: InputDecoration(
+                                labelText: "Password",
+                                fillColor: Colors.white,
+                                filled: true,
+                                errorStyle:
+                                    const TextStyle(fontFamily: "Montserrat"),
+                                contentPadding:
+                                    const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    borderSide:
+                                        const BorderSide(color: Colors.grey)),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    borderSide: BorderSide(
+                                        color: Colors.grey.shade400)),
+                                errorBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    borderSide: const BorderSide(
+                                        color: Color(0XFFff0a54), width: 2.0)),
+                                focusedErrorBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    borderSide: const BorderSide(
+                                        color: Colors.red, width: 2.0)),
+                              ),
+                              style: const TextStyle(
+                                fontFamily: "Montserrat",
+                                fontSize: 15,
+                              ),
+                            ),
+                            SizedBox(
+                              height: s.height * 0.0269,
+                            ),
+                            TextFormField(
+                              controller: _cpasswordController,
+                              onSaved: (value) {
+                                _cpasswordController.text = value!;
+                              },
+                              textInputAction: TextInputAction.done,
+                              obscureText: true,
+                              validator: (value) {
+                                if (_cpasswordController.text !=
+                                    _passwordController.text) {
+                                  return "Password don't match";
+                                }
+                                return null;
+                              },
+                              decoration: InputDecoration(
+                                labelText: "Conform Password",
+                                fillColor: Colors.white,
+                                filled: true,
+                                errorStyle:
+                                    const TextStyle(fontFamily: "Montserrat"),
+                                contentPadding:
+                                    const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    borderSide:
+                                        const BorderSide(color: Colors.grey)),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    borderSide: BorderSide(
+                                        color: Colors.grey.shade400)),
+                                errorBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    borderSide: const BorderSide(
+                                        color: Color(0XFFff0a54), width: 2.0)),
+                                focusedErrorBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    borderSide: const BorderSide(
+                                        color: Colors.red, width: 2.0)),
+                              ),
+                              style: const TextStyle(
+                                fontFamily: "Montserrat",
+                                fontSize: 15,
+                              ),
+                            ),
+                            SizedBox(
+                              height: s.height * 0.0372,
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Colors.deepPurple.shade300,
+                                gradient: const LinearGradient(
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                  stops: [0.0, 1.0],
+                                  colors: [
+                                    Color(0XFF7A43AB),
+                                    Color(0XFF57308D),
                                   ],
                                 ),
-                                Container(
-                                  alignment: Alignment.centerLeft,
-                                  child: Text(
-                                    state.errorText ?? '',
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                        color:
-                                            Theme.of(context).colorScheme.error,
-                                        fontSize: 12,
-                                        fontFamily: "Montserrat"),
-                                  ),
-                                )
-                              ],
-                            );
-                          },
-                          validator: (value) {
-                            if (!checkboxValue) {
-                              return 'You need to accept terms and conditions';
-                            } else {
-                              return null;
-                            }
-                          },
-                        ),
-                        const SizedBox(height: 20.0),
-                        Container(
-                          decoration: Styles().buttonBoxDecoration(context),
-                          child: ElevatedButton(
-                            style: Styles().buttonStyle(),
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.fromLTRB(40, 10, 40, 10),
-                              child: _isLoading
-                                  ? const Center(
-                                      child: CircularProgressIndicator(
-                                        color: white,
-                                      ),
-                                    )
-                                  : Text(
-                                      "Register".toUpperCase(),
-                                      style: const TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
-                                          fontFamily: "Montserrat"),
+                                borderRadius: BorderRadius.circular(30),
+                                boxShadow: const [
+                                  BoxShadow(
+                                      color: Colors.black26,
+                                      offset: Offset(0, 4),
+                                      blurRadius: 5.0)
+                                ],
+                              ),
+                              child: ElevatedButton(
+                                style: ButtonStyle(
+                                  shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30.0),
                                     ),
-                            ),
-                            onPressed: () {
-                              if (_formKey.currentState!.validate()) {
-                                signUpUser();
-                              }
-                            },
-                          ),
-                        ),
-                        const SizedBox(height: 30.0),
+                                  ),
+                                  minimumSize: MaterialStateProperty.all(
+                                      const Size(50, 50)),
+                                  backgroundColor: MaterialStateProperty.all(
+                                      Colors.transparent),
+                                  shadowColor: MaterialStateProperty.all(
+                                      Colors.transparent),
+                                ),
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(40, 10, 40, 10),
+                                  child: _isLoading
+                                      ? const Center(
+                                          child: CircularProgressIndicator(
+                                            color: white,
+                                          ),
+                                        )
+                                      : Text(
+                                          "See Plans".toUpperCase(),
+                                          style: const TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white,
+                                              fontFamily: "Montserrat"),
+                                        ),
+                                ),
+                                onPressed: () {
+                                  if (_formKey.currentState!.validate()) {
+                                    signUpUser();
+                                  }
+                                },
+                              ),
+                            )
+                          ],
+                        ))
                       ],
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 8,
-                        ),
-                        child: const Text(
-                          "Have an account?",
-                          style: TextStyle(
-                            fontFamily: "Montserrat",
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: navigateToLogin,
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 8,
-                          ),
-                          child: const Text(
-                            " Log in.",
-                            style: TextStyle(
-                              fontFamily: "Montserrat",
-                              color: bluebg,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 6),
-                ],
-              ),
-            ),
-          ],
-        ),
+                ),
+              )
+            ],
+          ),
+        )),
       ),
     );
   }
