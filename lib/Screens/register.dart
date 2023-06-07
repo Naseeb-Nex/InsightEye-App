@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:insighteye_app/Screens/Auth/login_src.dart';
 import 'package:insighteye_app/constants/constants.dart';
 import 'package:insighteye_app/Screens/models/user_model.dart';
@@ -53,11 +54,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     //first name field
     final categoryselector = InputDecorator(
       decoration: InputDecoration(
-        prefixIcon: const Icon(Icons.category),
-        contentPadding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+        contentPadding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
         hintText: "Category",
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(15),
         ),
       ),
       child: DropdownButtonHideUnderline(
@@ -69,12 +69,18 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               selectedcategory = value;
             });
           },
-          hint: const Text("Select category"),
+          hint: const Text(
+            "Select category",
+            style: TextStyle(
+                fontFamily: "Montserrat",
+                fontSize: 15,
+                color: Color(0XFF666666)),
+          ),
           elevation: 12,
-          style: const TextStyle(color: Colors.grey, fontSize: 16),
-          icon: const Icon(Icons.arrow_drop_down_circle),
-          iconDisabledColor: Colors.grey,
-          iconEnabledColor: bluebg,
+          style: const TextStyle(
+              fontFamily: "Montserrat", fontSize: 15, color: Colors.grey),
+          icon: const Icon(Icons.arrow_drop_down),
+          iconEnabledColor: const Color(0XFF666666),
           isExpanded: true,
         ),
       ),
@@ -101,11 +107,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         },
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
-          prefixIcon: const Icon(Icons.mail),
           contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
           hintText: "Email",
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(15),
           ),
         ));
 
@@ -129,11 +134,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         },
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
-          prefixIcon: const Icon(Icons.vpn_key),
           contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
           hintText: "Password",
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(15),
           ),
         ));
 
@@ -154,11 +158,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         },
         textInputAction: TextInputAction.done,
         decoration: InputDecoration(
-          prefixIcon: const Icon(Icons.vpn_key),
           contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
           hintText: "Confirm Password",
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(15),
           ),
         ));
 
@@ -166,7 +169,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     final signUpButton = Material(
       elevation: 5,
       borderRadius: BorderRadius.circular(30),
-      color: bluebg,
+      color: const Color(0XFF8236ae),
       child: MaterialButton(
           padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
           minWidth: MediaQuery.of(context).size.width,
@@ -181,58 +184,117 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           )),
     );
 
+    // Responsive Size
+
+    Size s = MediaQuery.of(context).size;
+
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: bluebg,
-        elevation: 10,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: white),
-          onPressed: () {
-            // passing this to our root
-            Navigator.of(context).pop();
-          },
-        ),
-      ),
-      body: Center(
-        child: SingleChildScrollView(
-          child: Container(
-            color: Colors.white,
-            child: Padding(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Stack(
+              children: [
+                Image.asset("assets/Icons/staff-head.png", width: s.width),
+                Padding(
+                  padding: EdgeInsets.only(top: s.height * 0.07),
+                  child: const Center(
+                    child: Text(
+                      "Staff Registration",
+                      style: TextStyle(
+                        fontFamily: "Montserrat",
+                        fontSize: 35,
+                        fontWeight: FontWeight.w500,
+                        color: white,
+                      ),
+                    ),
+                  ),
+                ),
+                SafeArea(
+                    child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: InkWell(
+                    onTap: () => Navigator.pop(context),
+                    child: Container(
+                      height: 40,
+                      width: 40,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        color: const Color(0XFFF3FFFE).withOpacity(0.2),
+                      ),
+                      child: const Center(
+                          child: Icon(
+                        Iconsax.arrow_left,
+                        color: white,
+                      )),
+                    ),
+                  ),
+                ))
+              ],
+            ),
+            Padding(
               padding: const EdgeInsets.all(36.0),
               child: Form(
                 key: _formKey,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    const SizedBox(
-                        height: 90,
-                        child: Text(
-                          "Staff Registration",
-                          style: TextStyle(
-                            fontFamily: "Nunito",
-                            fontSize: 35,
-                            fontWeight: FontWeight.bold,
-                            color: bluebg,
-                          ),
-                        )),
-                    const SizedBox(height: 10),
+                    const Text(
+                      "Category",
+                      style: TextStyle(
+                        fontFamily: "Montserrat",
+                        fontSize: 15,
+                        color: black,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    const SizedBox(height: 5),
                     categoryselector,
-                    const SizedBox(height: 20),
-                    emailField,
-                    const SizedBox(height: 20),
-                    passwordField,
-                    const SizedBox(height: 20),
-                    confirmPasswordField,
-                    const SizedBox(height: 20),
-                    signUpButton,
                     const SizedBox(height: 15),
+                    const Text(
+                      "Email",
+                      style: TextStyle(
+                        fontFamily: "Montserrat",
+                        fontSize: 15,
+                        color: black,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    const SizedBox(height: 5),
+                    emailField,
+                    const SizedBox(height: 15),
+                    const Text(
+                      "Password",
+                      style: TextStyle(
+                        fontFamily: "Montserrat",
+                        fontSize: 15,
+                        color: black,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    const SizedBox(height: 5),
+                    passwordField,
+                    const SizedBox(height: 15),
+                    const Text(
+                      "Confirm Password",
+                      style: TextStyle(
+                        fontFamily: "Montserrat",
+                        fontSize: 15,
+                        color: black,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    const SizedBox(height: 5),
+                    confirmPasswordField,
+                    const SizedBox(height: 35),
+                    signUpButton,
                   ],
                 ),
               ),
             ),
-          ),
+            Image.asset("assets/Icons/staff-footer.png", width: s.width),
+          ],
         ),
       ),
     );
