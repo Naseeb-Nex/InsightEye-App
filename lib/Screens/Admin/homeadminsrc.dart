@@ -55,8 +55,8 @@ class _HomeAdminState extends State<HomeAdmin> {
           orgId = displayName.substring(1);
           uid = user?.uid;
         });
+        pgmsetup();
       }
-      pgmsetup();
     }
   }
 
