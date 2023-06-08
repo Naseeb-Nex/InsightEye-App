@@ -72,7 +72,7 @@ class _OrgDetailsScreenState extends State<OrgDetailsScreen> {
                             fontFamily: "Montserrat"),
                       ),
                       const Text(
-                        'You can also be a guardian',
+                        'You can be a guardian',
                         style: TextStyle(
                             fontSize: 12,
                             color: Colors.blueGrey,
