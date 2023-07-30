@@ -151,14 +151,17 @@ class _HomeTechState extends State<HomeTech> {
                               Padding(
                                 padding: EdgeInsets.all(s.width * 0.02),
                                 child: InkWell(
-                                  onTap: () => Scaffold.of(context).closeDrawer(),
+                                  onTap: () =>
+                                      Scaffold.of(context).closeDrawer(),
                                   child: Container(
                                     padding: const EdgeInsets.all(10),
                                     decoration: BoxDecoration(
                                         border: Border.all(color: white),
-                                        borderRadius: BorderRadius.circular(10)),
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
                                       children: [
                                         const Icon(
                                           Iconsax.home,
@@ -202,9 +205,11 @@ class _HomeTechState extends State<HomeTech> {
                                     padding: const EdgeInsets.all(10),
                                     decoration: BoxDecoration(
                                         border: Border.all(color: white),
-                                        borderRadius: BorderRadius.circular(10)),
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
                                       children: [
                                         const Icon(
                                           Iconsax.personalcard,
@@ -238,13 +243,18 @@ class _HomeTechState extends State<HomeTech> {
                                           context: context,
                                           builder: (context) => Dialog(
                                                 child: Column(
-                                                  mainAxisSize: MainAxisSize.min,
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
                                                   children: [
                                                     Padding(
-                                                      padding: EdgeInsets.symmetric(
-                                                          horizontal:
-                                                              s.width * 0.02,
-                                                          vertical: s.width * 0.02),
+                                                      padding:
+                                                          EdgeInsets.symmetric(
+                                                              horizontal: s
+                                                                      .width *
+                                                                  0.02,
+                                                              vertical:
+                                                                  s.width *
+                                                                      0.02),
                                                       child: Column(
                                                         children: [
                                                           const Text(
@@ -254,12 +264,13 @@ class _HomeTechState extends State<HomeTech> {
                                                                   "Montserrat",
                                                               fontSize: 17,
                                                               fontWeight:
-                                                                  FontWeight.w700,
-                                                              color:
-                                                                  Color(0XFF607cf2),
+                                                                  FontWeight
+                                                                      .w700,
+                                                              color: Color(
+                                                                  0XFF607cf2),
                                                             ),
-                                                            textAlign:
-                                                                TextAlign.center,
+                                                            textAlign: TextAlign
+                                                                .center,
                                                           ),
                                                           const Text(
                                                             "try again later?",
@@ -268,12 +279,13 @@ class _HomeTechState extends State<HomeTech> {
                                                                   "Montserrat",
                                                               fontSize: 17,
                                                               fontWeight:
-                                                                  FontWeight.w700,
-                                                              color:
-                                                                  Color(0XFF607cf2),
+                                                                  FontWeight
+                                                                      .w700,
+                                                              color: Color(
+                                                                  0XFF607cf2),
                                                             ),
-                                                            textAlign:
-                                                                TextAlign.center,
+                                                            textAlign: TextAlign
+                                                                .center,
                                                           ),
                                                           const SizedBox(
                                                             height: 10,
@@ -283,14 +295,16 @@ class _HomeTechState extends State<HomeTech> {
                                                                 BoxDecoration(
                                                               borderRadius:
                                                                   BorderRadius
-                                                                      .circular(25),
+                                                                      .circular(
+                                                                          25),
                                                               color: white,
                                                               boxShadow: [
                                                                 BoxShadow(
                                                                   offset:
                                                                       const Offset(
                                                                           2, 4),
-                                                                  blurRadius: 20,
+                                                                  blurRadius:
+                                                                      20,
                                                                   color: secondbg
                                                                       .withOpacity(
                                                                           0.23),
@@ -338,12 +352,15 @@ class _HomeTechState extends State<HomeTech> {
                                                               MainAxisSize.min,
                                                           children: [
                                                             SizedBox(
-                                                              width: s.width * 0.25,
-                                                              height:
-                                                                  s.width * 0.25,
-                                                              child: Image.asset(
+                                                              width: s.width *
+                                                                  0.25,
+                                                              height: s.width *
+                                                                  0.25,
+                                                              child:
+                                                                  Image.asset(
                                                                 "assets/Icons/q_mark.png",
-                                                                fit: BoxFit.contain,
+                                                                fit: BoxFit
+                                                                    .contain,
                                                               ),
                                                             ),
                                                             const Text(
@@ -365,10 +382,12 @@ class _HomeTechState extends State<HomeTech> {
                                                                     "Montserrat",
                                                                 fontSize: 15,
                                                                 fontWeight:
-                                                                    FontWeight.w500,
+                                                                    FontWeight
+                                                                        .w500,
                                                               ),
                                                               textAlign:
-                                                                  TextAlign.center,
+                                                                  TextAlign
+                                                                      .center,
                                                             ),
                                                             const SizedBox(
                                                               height: 10,
@@ -380,9 +399,10 @@ class _HomeTechState extends State<HomeTech> {
                                                               children: [
                                                                 Flexible(
                                                                   flex: 1,
-                                                                  fit:
-                                                                      FlexFit.tight,
-                                                                  child: InkWell(
+                                                                  fit: FlexFit
+                                                                      .tight,
+                                                                  child:
+                                                                      InkWell(
                                                                     onTap: () =>
                                                                         Navigator.pop(
                                                                             context),
@@ -391,8 +411,7 @@ class _HomeTechState extends State<HomeTech> {
                                                                       decoration:
                                                                           BoxDecoration(
                                                                         borderRadius:
-                                                                            BorderRadius.circular(
-                                                                                15),
+                                                                            BorderRadius.circular(15),
                                                                         color: const Color(
                                                                             0XFF5963d5),
                                                                       ),
@@ -402,17 +421,14 @@ class _HomeTechState extends State<HomeTech> {
                                                                               10),
                                                                       child:
                                                                           const Center(
-                                                                        child: Text(
+                                                                        child:
+                                                                            Text(
                                                                           "Cancel",
                                                                           style: TextStyle(
-                                                                              fontFamily:
-                                                                                  "Montserrat",
-                                                                              fontSize:
-                                                                                  16,
-                                                                              color:
-                                                                                  white,
-                                                                              fontWeight:
-                                                                                  FontWeight.w600),
+                                                                              fontFamily: "Montserrat",
+                                                                              fontSize: 16,
+                                                                              color: white,
+                                                                              fontWeight: FontWeight.w600),
                                                                         ),
                                                                       ),
                                                                     ),
@@ -422,9 +438,10 @@ class _HomeTechState extends State<HomeTech> {
                                                                     width: 10),
                                                                 Flexible(
                                                                   flex: 1,
-                                                                  fit:
-                                                                      FlexFit.tight,
-                                                                  child: InkWell(
+                                                                  fit: FlexFit
+                                                                      .tight,
+                                                                  child:
+                                                                      InkWell(
                                                                     onTap: () {
                                                                       Navigator.of(
                                                                               context)
@@ -434,12 +451,9 @@ class _HomeTechState extends State<HomeTech> {
                                                                         context,
                                                                         MaterialPageRoute(
                                                                           builder: (context) => ReportSubmissionSrc(
-                                                                              techuid:
-                                                                                  uid,
-                                                                              techname: profile
-                                                                                  .name,
-                                                                              orgId:
-                                                                                  orgId),
+                                                                              techuid: uid,
+                                                                              techname: profile.name,
+                                                                              orgId: orgId),
                                                                         ),
                                                                       );
                                                                     },
@@ -448,8 +462,7 @@ class _HomeTechState extends State<HomeTech> {
                                                                       decoration:
                                                                           BoxDecoration(
                                                                         borderRadius:
-                                                                            BorderRadius.circular(
-                                                                                15),
+                                                                            BorderRadius.circular(15),
                                                                         color: const Color(
                                                                             0XFF5963d5),
                                                                       ),
@@ -459,17 +472,14 @@ class _HomeTechState extends State<HomeTech> {
                                                                               10),
                                                                       child:
                                                                           const Center(
-                                                                        child: Text(
+                                                                        child:
+                                                                            Text(
                                                                           "Ok",
                                                                           style: TextStyle(
-                                                                              fontFamily:
-                                                                                  "Montserrat",
-                                                                              fontSize:
-                                                                                  16,
-                                                                              color:
-                                                                                  white,
-                                                                              fontWeight:
-                                                                                  FontWeight.w600),
+                                                                              fontFamily: "Montserrat",
+                                                                              fontSize: 16,
+                                                                              color: white,
+                                                                              fontWeight: FontWeight.w600),
                                                                         ),
                                                                       ),
                                                                     ),
@@ -478,8 +488,8 @@ class _HomeTechState extends State<HomeTech> {
                                                               ],
                                                             ),
                                                             SizedBox(
-                                                              height:
-                                                                  s.width * 0.035,
+                                                              height: s.width *
+                                                                  0.035,
                                                             ),
                                                           ],
                                                         ),
@@ -487,8 +497,8 @@ class _HomeTechState extends State<HomeTech> {
                                                     ));
                                           } else {
                                             try {
-                                              bool nested = doc
-                                                  .get(FieldPath(const ['submit']));
+                                              bool nested = doc.get(
+                                                  FieldPath(const ['submit']));
                                               if (nested) {
                                                 Navigator.push(
                                                     context,
@@ -502,166 +512,147 @@ class _HomeTechState extends State<HomeTech> {
                                                 // Update when the submit is flase
                                                 showDialog(
                                                     context: context,
-                                                    builder: (context) => Dialog(
-                                                          child: Padding(
-                                                            padding: EdgeInsets.all(
-                                                                s.width * 0.03),
-                                                            child: Column(
-                                                              mainAxisSize:
-                                                                  MainAxisSize.min,
-                                                              children: [
-                                                                SizedBox(
-                                                                  width: s.width *
-                                                                      0.25,
-                                                                  height: s.width *
-                                                                      0.25,
-                                                                  child:
-                                                                      Image.asset(
-                                                                    "assets/Icons/q_mark.png",
-                                                                    fit: BoxFit
-                                                                        .contain,
-                                                                  ),
-                                                                ),
-                                                                const Text(
-                                                                  "Are you sure?",
-                                                                  style: TextStyle(
-                                                                      fontFamily:
-                                                                          "Montserrat",
-                                                                      fontSize: 17,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w700),
-                                                                ),
-                                                                const SizedBox(
-                                                                    height: 10),
-                                                                const Text(
-                                                                  "Would you like to submit your daily report?",
-                                                                  style: TextStyle(
-                                                                    fontFamily:
-                                                                        "Montserrat",
-                                                                    fontSize: 15,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w500,
-                                                                  ),
-                                                                  textAlign:
-                                                                      TextAlign
-                                                                          .center,
-                                                                ),
-                                                                const SizedBox(
-                                                                  height: 10,
-                                                                ),
-                                                                Row(
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .spaceAround,
+                                                    builder:
+                                                        (context) => Dialog(
+                                                              child: Padding(
+                                                                padding: EdgeInsets
+                                                                    .all(s.width *
+                                                                        0.03),
+                                                                child: Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .min,
                                                                   children: [
-                                                                    Flexible(
-                                                                      flex: 1,
-                                                                      fit: FlexFit
-                                                                          .tight,
-                                                                      child:
-                                                                          InkWell(
-                                                                        onTap: () =>
-                                                                            Navigator.pop(
-                                                                                context),
-                                                                        child:
-                                                                            Container(
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(15),
-                                                                            color: const Color(
-                                                                                0XFF5963d5),
-                                                                          ),
-                                                                          padding: const EdgeInsets
-                                                                                  .symmetric(
-                                                                              vertical:
-                                                                                  10),
-                                                                          child:
-                                                                              const Center(
-                                                                            child:
-                                                                                Text(
-                                                                              "Cancel",
-                                                                              style: TextStyle(
-                                                                                  fontFamily: "Montserrat",
-                                                                                  fontSize: 16,
-                                                                                  color: white,
-                                                                                  fontWeight: FontWeight.w600),
-                                                                            ),
-                                                                          ),
-                                                                        ),
+                                                                    SizedBox(
+                                                                      width: s.width *
+                                                                          0.25,
+                                                                      height:
+                                                                          s.width *
+                                                                              0.25,
+                                                                      child: Image
+                                                                          .asset(
+                                                                        "assets/Icons/q_mark.png",
+                                                                        fit: BoxFit
+                                                                            .contain,
                                                                       ),
                                                                     ),
+                                                                    const Text(
+                                                                      "Are you sure?",
+                                                                      style: TextStyle(
+                                                                          fontFamily:
+                                                                              "Montserrat",
+                                                                          fontSize:
+                                                                              17,
+                                                                          fontWeight:
+                                                                              FontWeight.w700),
+                                                                    ),
                                                                     const SizedBox(
-                                                                        width: 10),
-                                                                    Flexible(
-                                                                      flex: 1,
-                                                                      fit: FlexFit
-                                                                          .tight,
-                                                                      child:
-                                                                          InkWell(
-                                                                        onTap: () {
-                                                                          Navigator.of(
-                                                                                  context)
-                                                                              .pop();
-                                                                          Navigator
-                                                                              .push(
-                                                                            context,
-                                                                            MaterialPageRoute(
-                                                                              builder: (context) =>
-                                                                                  ReportSubmissionSrc(
-                                                                                techuid:
-                                                                                    uid,
-                                                                                techname:
-                                                                                    profile.name,
-                                                                                orgId:
-                                                                                    orgId,
-                                                                              ),
-                                                                            ),
-                                                                          );
-                                                                        },
-                                                                        child:
-                                                                            Container(
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(15),
-                                                                            color: const Color(
-                                                                                0XFF5963d5),
-                                                                          ),
-                                                                          padding: const EdgeInsets
-                                                                                  .symmetric(
-                                                                              vertical:
-                                                                                  10),
+                                                                        height:
+                                                                            10),
+                                                                    const Text(
+                                                                      "Would you like to submit your daily report?",
+                                                                      style:
+                                                                          TextStyle(
+                                                                        fontFamily:
+                                                                            "Montserrat",
+                                                                        fontSize:
+                                                                            15,
+                                                                        fontWeight:
+                                                                            FontWeight.w500,
+                                                                      ),
+                                                                      textAlign:
+                                                                          TextAlign
+                                                                              .center,
+                                                                    ),
+                                                                    const SizedBox(
+                                                                      height:
+                                                                          10,
+                                                                    ),
+                                                                    Row(
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .spaceAround,
+                                                                      children: [
+                                                                        Flexible(
+                                                                          flex:
+                                                                              1,
+                                                                          fit: FlexFit
+                                                                              .tight,
                                                                           child:
-                                                                              const Center(
+                                                                              InkWell(
+                                                                            onTap: () =>
+                                                                                Navigator.pop(context),
                                                                             child:
-                                                                                Text(
-                                                                              "Ok",
-                                                                              style: TextStyle(
-                                                                                  fontFamily: "Montserrat",
-                                                                                  fontSize: 16,
-                                                                                  color: white,
-                                                                                  fontWeight: FontWeight.w600),
+                                                                                Container(
+                                                                              decoration: BoxDecoration(
+                                                                                borderRadius: BorderRadius.circular(15),
+                                                                                color: const Color(0XFF5963d5),
+                                                                              ),
+                                                                              padding: const EdgeInsets.symmetric(vertical: 10),
+                                                                              child: const Center(
+                                                                                child: Text(
+                                                                                  "Cancel",
+                                                                                  style: TextStyle(fontFamily: "Montserrat", fontSize: 16, color: white, fontWeight: FontWeight.w600),
+                                                                                ),
+                                                                              ),
                                                                             ),
                                                                           ),
                                                                         ),
-                                                                      ),
+                                                                        const SizedBox(
+                                                                            width:
+                                                                                10),
+                                                                        Flexible(
+                                                                          flex:
+                                                                              1,
+                                                                          fit: FlexFit
+                                                                              .tight,
+                                                                          child:
+                                                                              InkWell(
+                                                                            onTap:
+                                                                                () {
+                                                                              Navigator.of(context).pop();
+                                                                              Navigator.push(
+                                                                                context,
+                                                                                MaterialPageRoute(
+                                                                                  builder: (context) => ReportSubmissionSrc(
+                                                                                    techuid: uid,
+                                                                                    techname: profile.name,
+                                                                                    orgId: orgId,
+                                                                                  ),
+                                                                                ),
+                                                                              );
+                                                                            },
+                                                                            child:
+                                                                                Container(
+                                                                              decoration: BoxDecoration(
+                                                                                borderRadius: BorderRadius.circular(15),
+                                                                                color: const Color(0XFF5963d5),
+                                                                              ),
+                                                                              padding: const EdgeInsets.symmetric(vertical: 10),
+                                                                              child: const Center(
+                                                                                child: Text(
+                                                                                  "Ok",
+                                                                                  style: TextStyle(fontFamily: "Montserrat", fontSize: 16, color: white, fontWeight: FontWeight.w600),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                    SizedBox(
+                                                                      height: s
+                                                                              .width *
+                                                                          0.035,
                                                                     ),
                                                                   ],
                                                                 ),
-                                                                SizedBox(
-                                                                  height: s.width *
-                                                                      0.035,
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                        ));
+                                                              ),
+                                                            ));
                                               }
                                             } on StateError {
-                                              print('Feild is not exist error!');
+                                              print(
+                                                  'Feild is not exist error!');
                                             }
                                           }
                                         },
@@ -675,13 +666,18 @@ class _HomeTechState extends State<HomeTech> {
                                           context: context,
                                           builder: (context) => Dialog(
                                                 child: Column(
-                                                  mainAxisSize: MainAxisSize.min,
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
                                                   children: [
                                                     Padding(
-                                                      padding: EdgeInsets.symmetric(
-                                                          horizontal:
-                                                              s.width * 0.02,
-                                                          vertical: s.width * 0.02),
+                                                      padding:
+                                                          EdgeInsets.symmetric(
+                                                              horizontal: s
+                                                                      .width *
+                                                                  0.02,
+                                                              vertical:
+                                                                  s.width *
+                                                                      0.02),
                                                       child: Column(
                                                         children: [
                                                           const Text(
@@ -691,12 +687,13 @@ class _HomeTechState extends State<HomeTech> {
                                                                   "Montserrat",
                                                               fontSize: 17,
                                                               fontWeight:
-                                                                  FontWeight.w700,
-                                                              color:
-                                                                  Color(0XFF9bdffe),
+                                                                  FontWeight
+                                                                      .w700,
+                                                              color: Color(
+                                                                  0XFF9bdffe),
                                                             ),
-                                                            textAlign:
-                                                                TextAlign.center,
+                                                            textAlign: TextAlign
+                                                                .center,
                                                           ),
                                                           const SizedBox(
                                                             height: 10,
@@ -706,14 +703,16 @@ class _HomeTechState extends State<HomeTech> {
                                                                 BoxDecoration(
                                                               borderRadius:
                                                                   BorderRadius
-                                                                      .circular(25),
+                                                                      .circular(
+                                                                          25),
                                                               color: white,
                                                               boxShadow: [
                                                                 BoxShadow(
                                                                   offset:
                                                                       const Offset(
                                                                           2, 4),
-                                                                  blurRadius: 20,
+                                                                  blurRadius:
+                                                                      20,
                                                                   color: secondbg
                                                                       .withOpacity(
                                                                           0.23),
@@ -737,9 +736,11 @@ class _HomeTechState extends State<HomeTech> {
                                     padding: const EdgeInsets.all(10),
                                     decoration: BoxDecoration(
                                         border: Border.all(color: white),
-                                        borderRadius: BorderRadius.circular(10)),
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
                                       children: [
                                         const Icon(
                                           Iconsax.receipt,
@@ -774,17 +775,19 @@ class _HomeTechState extends State<HomeTech> {
                                                 padding: EdgeInsets.symmetric(
                                                     vertical: s.height * 0.03,
                                                     horizontal: s.width * 0.02),
-                                                child:
-                                                    FutureBuilder<DocumentSnapshot>(
+                                                child: FutureBuilder<
+                                                    DocumentSnapshot>(
                                                   future: fb
-                                                      .collection("organizations")
+                                                      .collection(
+                                                          "organizations")
                                                       .doc("$orgId")
                                                       .collection("technician")
                                                       .doc(techuid)
                                                       .collection("Vehicle")
                                                       .doc(techvdoc)
                                                       .get(),
-                                                  builder: (BuildContext context,
+                                                  builder: (BuildContext
+                                                          context,
                                                       AsyncSnapshot<
                                                               DocumentSnapshot>
                                                           snapshot) {
@@ -794,7 +797,8 @@ class _HomeTechState extends State<HomeTech> {
                                                     }
 
                                                     if (snapshot.hasData &&
-                                                        !snapshot.data!.exists) {
+                                                        !snapshot
+                                                            .data!.exists) {
                                                       return Column(
                                                         mainAxisSize:
                                                             MainAxisSize.min,
@@ -815,7 +819,8 @@ class _HomeTechState extends State<HomeTech> {
                                                                   style: TextStyle(
                                                                       fontFamily:
                                                                           "Montserrat",
-                                                                      fontSize: 17,
+                                                                      fontSize:
+                                                                          17,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w700,
@@ -829,28 +834,27 @@ class _HomeTechState extends State<HomeTech> {
                                                                   decoration:
                                                                       BoxDecoration(
                                                                     borderRadius:
-                                                                        BorderRadius
-                                                                            .circular(
-                                                                                25),
-                                                                    color: white,
+                                                                        BorderRadius.circular(
+                                                                            25),
+                                                                    color:
+                                                                        white,
                                                                     boxShadow: [
                                                                       BoxShadow(
-                                                                        offset:
-                                                                            const Offset(
-                                                                                2,
-                                                                                4),
+                                                                        offset: const Offset(
+                                                                            2,
+                                                                            4),
                                                                         blurRadius:
                                                                             20,
                                                                         color: secondbg
-                                                                            .withOpacity(
-                                                                                0.23),
+                                                                            .withOpacity(0.23),
                                                                       ),
                                                                     ],
                                                                   ),
                                                                   clipBehavior:
                                                                       Clip.hardEdge,
-                                                                  child: Image.asset(
-                                                                      "assets/Icons/empty_garage.jpg"),
+                                                                  child: Image
+                                                                      .asset(
+                                                                          "assets/Icons/empty_garage.jpg"),
                                                                 ),
                                                               ],
                                                             ),
@@ -859,9 +863,11 @@ class _HomeTechState extends State<HomeTech> {
                                                       );
                                                     }
 
-                                                    if (snapshot.connectionState ==
+                                                    if (snapshot
+                                                            .connectionState ==
                                                         ConnectionState.done) {
-                                                      Map<String, dynamic> data =
+                                                      Map<String, dynamic>
+                                                          data =
                                                           snapshot.data!.data()
                                                               as Map<String,
                                                                   dynamic>;
@@ -879,20 +885,23 @@ class _HomeTechState extends State<HomeTech> {
                                                                     "Montserrat",
                                                                 fontSize: 17,
                                                                 fontWeight:
-                                                                    FontWeight.w600,
+                                                                    FontWeight
+                                                                        .w600,
                                                                 color: bluebg),
                                                           ),
                                                           const SizedBox(
                                                               height: 10),
                                                           Container(
-                                                            height: s.width * 0.5,
+                                                            height:
+                                                                s.width * 0.5,
                                                             clipBehavior:
                                                                 Clip.hardEdge,
                                                             decoration:
                                                                 BoxDecoration(
                                                               borderRadius:
                                                                   BorderRadius
-                                                                      .circular(15),
+                                                                      .circular(
+                                                                          15),
                                                               color: redbg,
                                                             ),
                                                             child: Image.asset(
@@ -905,12 +914,14 @@ class _HomeTechState extends State<HomeTech> {
                                                           ),
                                                           Text(
                                                             "${data["name"]}",
-                                                            style: const TextStyle(
+                                                            style:
+                                                                const TextStyle(
                                                               fontFamily:
                                                                   "Montserrat",
                                                               fontSize: 18,
                                                               fontWeight:
-                                                                  FontWeight.w500,
+                                                                  FontWeight
+                                                                      .w500,
                                                             ),
                                                           ),
                                                           Row(
@@ -929,7 +940,8 @@ class _HomeTechState extends State<HomeTech> {
                                                                         const TextStyle(
                                                                       fontFamily:
                                                                           "Montserrt",
-                                                                      fontSize: 12,
+                                                                      fontSize:
+                                                                          12,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w300,
@@ -941,7 +953,8 @@ class _HomeTechState extends State<HomeTech> {
                                                                         const TextStyle(
                                                                       fontFamily:
                                                                           "Montserrt",
-                                                                      fontSize: 12,
+                                                                      fontSize:
+                                                                          12,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w300,
@@ -960,14 +973,16 @@ class _HomeTechState extends State<HomeTech> {
                                                           MainAxisSize.min,
                                                       children: [
                                                         Container(
-                                                          width:
-                                                              MediaQuery.of(context)
-                                                                  .size
-                                                                  .width,
-                                                          decoration: BoxDecoration(
+                                                          width: MediaQuery.of(
+                                                                  context)
+                                                              .size
+                                                              .width,
+                                                          decoration:
+                                                              BoxDecoration(
                                                             borderRadius:
                                                                 BorderRadius
-                                                                    .circular(25),
+                                                                    .circular(
+                                                                        25),
                                                             color: white,
                                                             boxShadow: [
                                                               BoxShadow(
@@ -989,16 +1004,19 @@ class _HomeTechState extends State<HomeTech> {
                                                                             0.1),
                                                             child: Center(
                                                               child: SizedBox(
-                                                                width:
-                                                                    s.width * 0.15,
+                                                                width: s.width *
+                                                                    0.15,
                                                                 height:
-                                                                    s.width * 0.15,
+                                                                    s.width *
+                                                                        0.15,
                                                                 child:
                                                                     const LoadingIndicator(
                                                                   indicatorType:
                                                                       Indicator
                                                                           .ballClipRotateMultiple,
-                                                                  colors: [bluebg],
+                                                                  colors: [
+                                                                    bluebg
+                                                                  ],
                                                                 ),
                                                               ),
                                                             ),
@@ -1015,9 +1033,11 @@ class _HomeTechState extends State<HomeTech> {
                                     padding: const EdgeInsets.all(10),
                                     decoration: BoxDecoration(
                                         border: Border.all(color: white),
-                                        borderRadius: BorderRadius.circular(10)),
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
                                       children: [
                                         const Icon(
                                           Iconsax.truck,
@@ -1157,7 +1177,14 @@ class _HomeTechState extends State<HomeTech> {
                   c = completedpgm.length;
 
                   int total = p + pro + c;
-                  double progress = total / a * 100;
+                  double progress = 0;
+
+                  if (a != 0) {
+                    progress = (total / a) * 100;
+                  } else if (a < total) {
+                    a = total;
+                    progress = 100;
+                  }
 
                   return CircularProgressBar(
                     strokeWidth: 18.0,
@@ -1178,7 +1205,7 @@ class _HomeTechState extends State<HomeTech> {
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(40),
                       topRight: Radius.circular(40)),
-                  color: techbg,
+                  color: Color(0XFF9643D6),
                 ),
                 clipBehavior: Clip.hardEdge,
                 child: SingleChildScrollView(
@@ -1220,10 +1247,15 @@ class _HomeTechState extends State<HomeTech> {
                                 ConnectionState.waiting) {
                               pgmSize = -1;
                               return SizedBox(
-                                height: s.height * 0.7,
+                                height: s.height * 0.535,
                                 child: const Center(
-                                  child: CircularProgressIndicator(
-                                    color: bluebg,
+                                  child: SizedBox(
+                                    width: 50,
+                                    child: LoadingIndicator(
+                                      indicatorType: Indicator.ballBeat,
+                                      colors: [white],
+                                      strokeWidth: 10,
+                                    ),
                                   ),
                                 ),
                               );
@@ -1246,41 +1278,93 @@ class _HomeTechState extends State<HomeTech> {
 
                             allpgm.sort((a, b) =>
                                 a["priority"].compareTo(b["priority"]));
-                            return Column(
-                              children: [
-                                const SizedBox(height: 10),
-                                for (var i = 0; i < allpgm.length; i++) ...[
-                                  const SizedBox(
-                                    height: 5,
-                                  ),
-                                  TechPgmCard(
-                                    uid: allpgm[i]['uid'],
-                                    name: allpgm[i]['name'],
-                                    address: allpgm[i]['address'],
-                                    loc: allpgm[i]['loc'],
-                                    phn: allpgm[i]['phn'],
-                                    pgm: allpgm[i]['pgm'],
-                                    chrg: allpgm[i]['chrg'],
-                                    type: allpgm[i]['type'],
-                                    upDate: allpgm[i]['upDate'],
-                                    upTime: allpgm[i]['upTime'],
-                                    docname: allpgm[i]['docname'],
-                                    status: allpgm[i]['status'],
-                                    techuid: allpgm[i]['techuid'],
-                                    techname: allpgm[i]['techname'],
-                                    assignedtime: allpgm[i]['assignedtime'],
-                                    prospec: allpgm[i]['prospec'],
-                                    instadate: allpgm[i]['instadate'],
-                                    assigneddate: allpgm[i]['assigneddate'],
-                                    priority: allpgm[i]['priority'],
-                                    custdocname: allpgm[i]['custdocname'],
-                                    orgId: orgId,
-                                  ),
-                                ],
-                                const SizedBox(
-                                  height: 30,
-                                ),
-                              ],
+                            return Container(
+                              child: allpgm.length > 0
+                                  ? Column(
+                                      children: [
+                                        const SizedBox(height: 10),
+                                        for (var i = 0;
+                                            i < allpgm.length;
+                                            i++) ...[
+                                          const SizedBox(
+                                            height: 5,
+                                          ),
+                                          TechPgmCard(
+                                            uid: allpgm[i]['uid'],
+                                            name: allpgm[i]['name'],
+                                            address: allpgm[i]['address'],
+                                            loc: allpgm[i]['loc'],
+                                            phn: allpgm[i]['phn'],
+                                            pgm: allpgm[i]['pgm'],
+                                            chrg: allpgm[i]['chrg'],
+                                            type: allpgm[i]['type'],
+                                            upDate: allpgm[i]['upDate'],
+                                            upTime: allpgm[i]['upTime'],
+                                            docname: allpgm[i]['docname'],
+                                            status: allpgm[i]['status'],
+                                            techuid: allpgm[i]['techuid'],
+                                            techname: allpgm[i]['techname'],
+                                            assignedtime: allpgm[i]
+                                                ['assignedtime'],
+                                            prospec: allpgm[i]['prospec'],
+                                            instadate: allpgm[i]['instadate'],
+                                            assigneddate: allpgm[i]
+                                                ['assigneddate'],
+                                            priority: allpgm[i]['priority'],
+                                            custdocname: allpgm[i]
+                                                ['custdocname'],
+                                            orgId: orgId,
+                                          ),
+                                        ],
+                                        const SizedBox(
+                                          height: 30,
+                                        ),
+                                      ],
+                                    )
+                                  : Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 15, vertical: 20),
+                                        child: Container(
+                                          height: s.height * 0.07,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              color: const Color.fromARGB(
+                                                  255, 255, 244, 252),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: Colors.black
+                                                      .withOpacity(0.2),
+                                                  spreadRadius: 2,
+                                                  blurRadius: 5,
+                                                  offset: const Offset(0, 3),
+                                                ),
+                                              ]),
+                                          child: const Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceAround,
+                                            children: [
+                                              Icon(
+                                                Iconsax.briefcase,
+                                                color: techbg,
+                                                size: 30,
+                                              ),
+                                              SizedBox(width: 10),
+                                              Text(
+                                                "No More Tasks",
+                                                style: TextStyle(
+                                                  fontFamily: "Montserrat",
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: techbg,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
                             );
                           }),
                     ],

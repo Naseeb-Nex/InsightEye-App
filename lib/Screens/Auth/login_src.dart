@@ -6,7 +6,6 @@ import 'package:insighteye_app/Screens/homeWrapper.dart';
 
 import 'package:insighteye_app/components/styles.dart';
 import 'package:insighteye_app/constants/constants.dart';
-// import 'package:insighteye_app/screens/registration_page.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';

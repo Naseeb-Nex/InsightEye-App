@@ -426,7 +426,7 @@ class _CreateProfileState extends State<CreateProfile> {
       }).then((value) {
         Fluttertoast.showToast(msg: "Profile Created Successfully");
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => HomeTech()));
+            context, MaterialPageRoute(builder: (context) => const HomeTech()));
       }, onError: (error) {
         Fluttertoast.showToast(msg: "Failed to create profile :( $error");
         return Future.value(null); // Return a Future that resolves to null

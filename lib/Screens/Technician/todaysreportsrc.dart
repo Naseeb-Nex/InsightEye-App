@@ -42,7 +42,7 @@ class _TodaysreportsrcState extends State<Todaysreportsrc> {
                     padding: const EdgeInsets.all(15),
                     child: InkWell(
                       onTap: () => Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => HomeTech())),
+                          MaterialPageRoute(builder: (context) => const HomeTech())),
                       child: Container(
                         height: 40,
                         width: 40,
