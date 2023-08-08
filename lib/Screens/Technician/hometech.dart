@@ -1352,7 +1352,7 @@ class _HomeTechState extends State<HomeTech> {
                                               ),
                                               SizedBox(width: 10),
                                               Text(
-                                                "No More Tasks",
+                                                "Task Empty",
                                                 style: TextStyle(
                                                   fontFamily: "Montserrat",
                                                   fontSize: 15,

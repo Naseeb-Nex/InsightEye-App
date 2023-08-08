@@ -91,10 +91,9 @@ class _TechprofilesrcState extends State<Techprofilesrc> {
                     SizedBox(
                       width: s.height * 0.13,
                       height: s.height * 0.13,
-                      child: const CircleAvatar(
-                        backgroundColor: bluebg,
-                        backgroundImage:
-                            AssetImage("assets/Icons/avataricon.png"),
+                      child: CircleAvatar(
+                        backgroundColor: Colors.white,
+                        backgroundImage: NetworkImage(widget.img!),
                       ),
                     ),
                     const SizedBox(
@@ -103,9 +102,10 @@ class _TechprofilesrcState extends State<Techprofilesrc> {
                     Text(
                       "${widget.name}",
                       style: const TextStyle(
-                          fontFamily: "Montserrat",
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24),
+                        fontFamily: "Montserrat",
+                        fontWeight: FontWeight.w600,
+                        fontSize: 24,
+                      ),
                     ),
                     const SizedBox(
                       height: 10,

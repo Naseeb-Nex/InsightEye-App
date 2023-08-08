@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:insighteye_app/screens/Admin/monthlyreportsrc.dart';
 import 'package:insighteye_app/screens/Admin/vechicleportal.dart';
 import 'package:intl/intl.dart';
-import 'dart:math';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -1459,7 +1458,7 @@ class Techcardspace extends StatelessWidget {
               return Techcard(
                 orgId: orgId,
                 name: techprofile[i]['name'],
-                img: techprofile[i]['pic'],
+                img: techprofile[i]['imgUrl'],
                 techuid: techprofile[i]['uid'],
                 uid: techprofile[i]['uid'],
               );
@@ -1486,21 +1485,10 @@ class Techcard extends StatefulWidget {
 class _TechcardState extends State<Techcard> {
   FirebaseFirestore fb = FirebaseFirestore.instance;
 
-  var random = Random();
-  List<String> techimg = [
-    "assets/Icons/tech_avatar1.png",
-    "assets/Icons/tech_avatar2.png",
-    "assets/Icons/tech_avatar3.png",
-  ];
-
   @override
   Widget build(BuildContext context) {
     DateTime now = DateTime.now();
     String cday = DateFormat('MM d y').format(now);
-
-    // Image selection task
-    int num = random.nextInt(100);
-    int loc = num % 3;
 
     Size s = MediaQuery.of(context).size;
 
@@ -1525,13 +1513,14 @@ class _TechcardState extends State<Techcard> {
               color: white,
               boxShadow: [
                 BoxShadow(
-                    spreadRadius: 1,
-                    blurRadius: 3,
-                    color: Colors.black.withOpacity(0.1),
-                    offset: const Offset(0, 2))
+                  spreadRadius: 1,
+                  blurRadius: 3,
+                  color: Colors.black.withOpacity(0.1),
+                  offset: const Offset(0, 2),
+                ),
               ]),
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -1552,9 +1541,9 @@ class _TechcardState extends State<Techcard> {
                     child: SizedBox(
                       width: s.width * 0.2,
                       height: s.width * 0.2,
-                      child: Image.asset(
-                        techimg[loc],
-                        fit: BoxFit.contain,
+                      child: CircleAvatar(
+                        backgroundColor: Colors.white,
+                        backgroundImage: NetworkImage(widget.img!),
                       ),
                     ),
                   ),

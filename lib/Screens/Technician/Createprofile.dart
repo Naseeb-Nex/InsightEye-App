@@ -7,6 +7,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:flutter/services.dart';
 import 'package:insighteye_app/Screens/Auth/firebase_auth/storage_methods.dart';
+import 'package:insighteye_app/components/styles.dart';
+import 'package:insighteye_app/constants/constants.dart';
 
 import 'package:insighteye_app/screens/Technician/hometech.dart';
 
@@ -80,13 +82,12 @@ class _CreateProfileState extends State<CreateProfile> {
         }
         return null;
       },
-      decoration: InputDecoration(
-        contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-        labelText: "address",
-        labelStyle: const TextStyle(fontFamily: "Nunito", fontSize: 14),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
+      cursorColor: white,
+      decoration: Styles().SimpleInputDec("Address"),
+      style: const TextStyle(
+        fontFamily: "Montserrat",
+        fontSize: 15,
+        color: white,
       ),
     );
     //name field
@@ -104,13 +105,12 @@ class _CreateProfileState extends State<CreateProfile> {
         }
         return null;
       },
-      decoration: InputDecoration(
-        contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-        labelText: "Full Name",
-        labelStyle: const TextStyle(fontFamily: "Nunito", fontSize: 14),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
+      cursorColor: white,
+      decoration: Styles().SimpleInputDec("Full Name"),
+      style: const TextStyle(
+        fontFamily: "Montserrat",
+        fontSize: 15,
+        color: white,
       ),
     );
 
@@ -129,13 +129,12 @@ class _CreateProfileState extends State<CreateProfile> {
         }
         return null;
       },
-      decoration: InputDecoration(
-        contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-        labelText: "Designation",
-        labelStyle: const TextStyle(fontFamily: "Nunito", fontSize: 14),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
+      cursorColor: white,
+      decoration: Styles().SimpleInputDec("Designation"),
+      style: const TextStyle(
+        fontFamily: "Montserrat",
+        fontSize: 15,
+        color: white,
       ),
     );
 
@@ -156,13 +155,12 @@ class _CreateProfileState extends State<CreateProfile> {
         }
         return null;
       },
-      decoration: InputDecoration(
-        contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-        labelText: "Phone Number 2",
-        labelStyle: const TextStyle(fontFamily: "Nunito", fontSize: 14),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
+      cursorColor: white,
+      decoration: Styles().SimpleInputDec("Phone Number 2"),
+      style: const TextStyle(
+        fontFamily: "Montserrat",
+        fontSize: 15,
+        color: white,
       ),
     );
 
@@ -183,13 +181,12 @@ class _CreateProfileState extends State<CreateProfile> {
         }
         return null;
       },
-      decoration: InputDecoration(
-        contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-        labelText: "Phone Number 1",
-        labelStyle: const TextStyle(fontFamily: "Nunito", fontSize: 14),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
+      cursorColor: white,
+      decoration: Styles().SimpleInputDec("Phone Number 1"),
+      style: const TextStyle(
+        fontFamily: "Montserrat",
+        fontSize: 15,
+        color: white,
       ),
     );
 
@@ -208,168 +205,219 @@ class _CreateProfileState extends State<CreateProfile> {
         }
         return null;
       },
-      decoration: InputDecoration(
-        contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-        labelText: "Home Location",
-        labelStyle: const TextStyle(fontFamily: "Nunito", fontSize: 14),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
+      cursorColor: white,
+      decoration: Styles().SimpleInputDec("Home Location"),
+      style: const TextStyle(
+        fontFamily: "Montserrat",
+        fontSize: 15,
+        color: white,
       ),
     );
 
-    return Scaffold(
-      body: Container(
-        padding: const EdgeInsets.only(left: 16, top: 25, right: 16),
-        child: GestureDetector(
-          onTap: () {
-            FocusScope.of(context).unfocus();
-          },
-          child: ListView(
-            children: [
-              const SizedBox(
-                height: 50,
-                child: Center(
-                  child: Text(
-                    "Create Profile",
-                    style: TextStyle(
-                        fontFamily: "Nunito",
+    // Responsive size
+    Size s = MediaQuery.of(context).size;
+
+    return Container(
+      width: s.width,
+      height: s.height,
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(
+            'assets/Images/bg.png',
+          ),
+          fit: BoxFit.fill,
+        ),
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Container(
+          padding: const EdgeInsets.only(left: 16, top: 25, right: 16),
+          child: GestureDetector(
+            onTap: () {
+              FocusScope.of(context).unfocus();
+            },
+            child: ListView(
+              children: [
+                const SizedBox(
+                  height: 50,
+                  child: Center(
+                    child: Text(
+                      "Create Profile",
+                      style: TextStyle(
+                        fontFamily: "Montserrat",
                         fontSize: 25,
-                        fontWeight: FontWeight.bold),
+                        fontWeight: FontWeight.bold,
+                        color: white,
+                      ),
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(
-                height: 18,
-              ),
-              Center(
-                child: GestureDetector(
-                  onTap: () => selectImage(),
-                  child: Stack(
-                    children: [
-                      // Image picker
-                      Container(
-                        padding: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(100),
-                          border: Border.all(width: 5, color: Colors.white),
-                          color: Colors.white,
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Colors.black12,
-                              blurRadius: 20,
-                              offset: Offset(5, 5),
-                            ),
-                          ],
+                const SizedBox(
+                  height: 18,
+                ),
+                Center(
+                  child: GestureDetector(
+                    onTap: () => selectImage(),
+                    child: Stack(
+                      children: [
+                        // Image picker
+                        Container(
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(100),
+                            border: Border.all(width: 5, color: Colors.white),
+                            color: Colors.white,
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Colors.black12,
+                                blurRadius: 20,
+                                offset: Offset(5, 5),
+                              ),
+                            ],
+                          ),
+                          child: _image != null
+                              ? CircleAvatar(
+                                  radius: 64,
+                                  backgroundImage: MemoryImage(_image!),
+                                )
+                              : Icon(
+                                  Icons.person,
+                                  color: Colors.grey.shade300,
+                                  size: 80.0,
+                                ),
                         ),
-                        child: _image != null
-                            ? CircleAvatar(
-                                radius: 64,
-                                backgroundImage: MemoryImage(_image!),
-                              )
-                            : Icon(
-                                Icons.person,
-                                color: Colors.grey.shade300,
-                                size: 80.0,
-                              ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.fromLTRB(80, 80, 0, 0),
-                        child: _image != null
-                            ? const Icon(
-                                Icons.add_circle,
-                                color: Colors.transparent,
-                              )
-                            : Icon(
-                                Icons.add_circle,
-                                color: Colors.grey.shade700,
-                                size: 25.0,
-                              ),
-                      ),
-                    ],
+                        Container(
+                          padding: const EdgeInsets.fromLTRB(80, 80, 0, 0),
+                          child: _image != null
+                              ? const Icon(
+                                  Icons.add_circle,
+                                  color: Colors.transparent,
+                                )
+                              : const Icon(
+                                  Icons.add_circle,
+                                  color: Color(0XFF421d76),
+                                  size: 25.0,
+                                ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(
-                height: 35,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Form(
-                  key: _formKey,
-                  child: Column(
+                const SizedBox(
+                  height: 35,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        namefield,
+                        const SizedBox(
+                          height: 35,
+                        ),
+                        addressfield,
+                        const SizedBox(
+                          height: 35,
+                        ),
+                        designationfield,
+                        const SizedBox(
+                          height: 35,
+                        ),
+                        phn1field,
+                        const SizedBox(
+                          height: 35,
+                        ),
+                        phn2field,
+                        const SizedBox(
+                          height: 35,
+                        ),
+                        locationfield,
+                        const SizedBox(
+                          height: 35,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      namefield,
-                      const SizedBox(
-                        height: 35,
-                      ),
-                      addressfield,
-                      const SizedBox(
-                        height: 35,
-                      ),
-                      designationfield,
-                      const SizedBox(
-                        height: 35,
-                      ),
-                      phn1field,
-                      const SizedBox(
-                        height: 35,
-                      ),
-                      phn2field,
-                      const SizedBox(
-                        height: 35,
-                      ),
-                      locationfield,
-                      const SizedBox(
-                        height: 35,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  OutlinedButton(
-                    // padding: const EdgeInsets.symmetric(horizontal: 50),
-                    // shape: RoundedRectangleBorder(
-                    //     borderRadius: BorderRadius.circular(20)),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: const Text("CANCEL",
-                        style: TextStyle(
-                            fontFamily: "Nunito",
+                      OutlinedButton(
+                        // padding: const EdgeInsets.symmetric(horizontal: 50),
+                        // shape: RoundedRectangleBorder(
+                        //     borderRadius: BorderRadius.circular(20)),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        style: OutlinedButton.styleFrom(
+                          primary: Colors.black,
+                          backgroundColor: Colors.transparent,
+                          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                          elevation: 2,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
+                        child: const Text(
+                          "CANCEL",
+                          style: TextStyle(
+                            fontFamily: "Montserrat",
                             fontSize: 14,
                             letterSpacing: 2.2,
-                            color: Colors.black)),
+                            color: white,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.deepPurple.shade300,
+                          gradient: const LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            stops: [0.0, 1.0],
+                            colors: [
+                              Color(0XFF7A43AB),
+                              Color(0XFF57308D),
+                            ],
+                          ),
+                          borderRadius: BorderRadius.circular(20),
+                          boxShadow: const [
+                            BoxShadow(
+                                color: Colors.black26,
+                                offset: Offset(0, 4),
+                                blurRadius: 5.0)
+                          ],
+                        ),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            uploadData();
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.transparent,
+                            padding: const EdgeInsets.symmetric(horizontal: 50),
+                            elevation: 0,
+                          ),
+                          child: const Text(
+                            "SAVE",
+                            style: TextStyle(
+                                fontFamily: "Nunito",
+                                fontSize: 14,
+                                letterSpacing: 2.2,
+                                color: Colors.white),
+                          ),
+                        ),
+                      )
+                    ],
                   ),
-                  ElevatedButton(
-                    onPressed: () {
-                      uploadData();
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.green,
-                      padding: const EdgeInsets.symmetric(horizontal: 50),
-                      elevation: 2,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20)),
-                    ),
-                    child: const Text(
-                      "SAVE",
-                      style: TextStyle(
-                          fontFamily: "Nunito",
-                          fontSize: 14,
-                          letterSpacing: 2.2,
-                          color: Colors.white),
-                    ),
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 35,
-              )
-            ],
+                ),
+                const SizedBox(
+                  height: 35,
+                )
+              ],
+            ),
           ),
         ),
       ),

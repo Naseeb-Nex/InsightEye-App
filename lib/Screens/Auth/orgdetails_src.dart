@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:insighteye_app/Screens/Auth/org_reg_src.dart';
+import 'package:insighteye_app/constants/constants.dart';
 
 class OrgDetailsScreen extends StatefulWidget {
   const OrgDetailsScreen({super.key});
@@ -13,7 +14,7 @@ class _OrgDetailsScreenState extends State<OrgDetailsScreen> {
   // form key
   final _formKey = GlobalKey<FormState>();
 
-    final TextEditingController _orgnameController = TextEditingController();
+  final TextEditingController _orgnameController = TextEditingController();
   final TextEditingController _orgtypeController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
 
@@ -35,7 +36,7 @@ class _OrgDetailsScreenState extends State<OrgDetailsScreen> {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-         appBar: AppBar(
+        appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
           leading: IconButton(
@@ -79,7 +80,6 @@ class _OrgDetailsScreenState extends State<OrgDetailsScreen> {
                             fontWeight: FontWeight.w400,
                             fontFamily: "Montserrat"),
                       ),
-
                       SizedBox(
                         height: s.height * 0.03,
                       ),
@@ -99,9 +99,15 @@ class _OrgDetailsScreenState extends State<OrgDetailsScreen> {
                               onSaved: (value) {
                                 _orgnameController.text = value!;
                               },
+                              cursorColor: const Color(0XFF57308D),
                               textInputAction: TextInputAction.next,
                               decoration: InputDecoration(
                                 labelText: "Organisation Name",
+                                labelStyle: const TextStyle(
+                                  fontFamily: "Montserrat",
+                                  fontSize: 15,
+                                  color: nonactivetxt,
+                                ),
                                 fillColor: Colors.white,
                                 filled: true,
                                 errorStyle:
@@ -143,11 +149,17 @@ class _OrgDetailsScreenState extends State<OrgDetailsScreen> {
                               onSaved: (value) {
                                 _orgtypeController.text = value!;
                               },
+                              cursorColor: const Color(0XFF57308D),
                               textInputAction: TextInputAction.next,
                               decoration: InputDecoration(
                                 labelText: "Organisation Type",
                                 fillColor: Colors.white,
                                 filled: true,
+                                labelStyle: const TextStyle(
+                                  fontFamily: "Montserrat",
+                                  fontSize: 15,
+                                  color: nonactivetxt,
+                                ),
                                 errorStyle:
                                     const TextStyle(fontFamily: "Montserrat"),
                                 contentPadding:
@@ -187,11 +199,17 @@ class _OrgDetailsScreenState extends State<OrgDetailsScreen> {
                               onSaved: (value) {
                                 _addressController.text = value!;
                               },
+                              cursorColor: const Color(0XFF57308D),
                               textInputAction: TextInputAction.next,
                               decoration: InputDecoration(
                                 labelText: "Organisation Address",
                                 fillColor: Colors.white,
                                 filled: true,
+                                labelStyle: const TextStyle(
+                                  fontFamily: "Montserrat",
+                                  fontSize: 15,
+                                  color: nonactivetxt,
+                                ),
                                 errorStyle:
                                     const TextStyle(fontFamily: "Montserrat"),
                                 contentPadding:
@@ -280,12 +298,17 @@ class _OrgDetailsScreenState extends State<OrgDetailsScreen> {
                                 ),
                                 onPressed: () {
                                   if (_formKey.currentState!.validate()) {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => OrgRegistrationSrc(
-                                        orgname: _orgnameController.text,
-                                        orgtype: _orgtypeController.text,
-                                        orgAddress: _addressController.text,
-                                      )));
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                OrgRegistrationSrc(
+                                                  orgname:
+                                                      _orgnameController.text,
+                                                  orgtype:
+                                                      _orgtypeController.text,
+                                                  orgAddress:
+                                                      _addressController.text,
+                                                )));
                                   }
                                 },
                               ),
