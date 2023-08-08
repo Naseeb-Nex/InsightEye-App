@@ -495,3 +495,199 @@ class _ProfilesrcState extends State<Profilesrc> {
         MaterialPageRoute(builder: (context) => const LoginSrc()));
   }
 }
+
+
+
+
+// import 'package:flutter/material.dart';
+// import 'package:flutter/src/widgets/framework.dart';
+// import 'package:flutter/src/widgets/placeholder.dart';
+
+// class screenProfile extends StatefulWidget {
+//   const screenProfile({super.key});
+
+//   @override
+//   State<screenProfile> createState() => _screenProfileState();
+// }
+
+// class _screenProfileState extends State<screenProfile> {
+//   @override
+//   Widget build(BuildContext context) {
+//     // Responsive Size
+//     Size s = MediaQuery.of(context).size;
+
+// //for small 4 containers
+//     Widget _buildSquareContainer(Color dotcolor, num, taskname) {
+//       return Container(
+//         width: s.width * 0.3093,
+//         height: s.height * 0.1427,
+//         decoration: BoxDecoration(
+//             color: Colors.white,
+//             borderRadius: BorderRadius.circular(25),
+//             boxShadow: [
+//               BoxShadow(
+//                   color: Colors.black.withOpacity(0.35),
+//                   spreadRadius: 0,
+//                   blurRadius: 12,
+//                   offset: Offset(4, 4))
+//             ]),
+//         child: Stack(
+//           children: [
+//             Positioned(
+//               top: 15,
+//               left: 15,
+//               child: Container(
+//                 width: 12,
+//                 height: 12,
+//                 decoration: BoxDecoration(
+//                   color: dotcolor,
+//                   shape: BoxShape.circle,
+//                 ),
+//               ),
+//             ),
+//             Center(
+//               child: Column(
+//                 mainAxisAlignment: MainAxisAlignment.center,
+//                 children: [
+//                   Text(
+//                     num,
+//                     style: TextStyle(
+//                       fontSize: 24,
+//                       fontWeight: FontWeight.bold,
+//                     ),
+//                   ),
+//                   SizedBox(height: 10),
+//                   Text(taskname),
+//                 ],
+//               ),
+//             ),
+//           ],
+//         ),
+//       );
+//     }
+
+//     return Scaffold(
+//       body: SafeArea(
+//         child: Column(
+//           children: [
+//             SizedBox(
+//               height: s.height * 0.0171,
+//             ),
+//             Row(
+//               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//               children: [
+//                 SizedBox(height: 50, width: 50, child: Icon(Icons.arrow_back)),
+//                 Text(
+//                   'My Profile',
+//                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.w600),
+//                 ),
+//                 SizedBox(
+//                   height: 50,
+//                   width: 50,
+//                 )
+//               ],
+//             ),
+//             SizedBox(
+//               height: s.height * 0.0214,
+//             ),
+//             Image.asset('assets/images/fotor_2023-6-4_20_15_31 1.png'),
+//             SizedBox(
+//               height: s.height * 0.0128,
+//             ),
+//             Row(
+//               mainAxisAlignment: MainAxisAlignment.center,
+//               children: [
+//                 Text(
+//                   'Thasni Thaha',
+//                   style: TextStyle(fontSize: 30),
+//                 ),
+//                 SizedBox(
+//                   width: s.width * 0.0279,
+//                 ),
+//                 IconButton(
+//                     onPressed: () {
+//                       //write function for edit button
+//                     },
+//                     icon: Icon(Icons.edit_outlined))
+//               ],
+//             ),
+//             Padding(
+//               padding: const EdgeInsets.all(18),
+//               child: Container(
+//                 width: s.width * 0.9162,
+//                 height: s.height * 0.4828,
+//                 decoration: BoxDecoration(
+//                   color: Colors.white,
+//                   borderRadius: BorderRadius.circular(30),
+//                   boxShadow: [
+//                     BoxShadow(
+//                       color: Colors.black.withOpacity(0.25),
+//                       offset: Offset(0, 0),
+//                       blurRadius: 6,
+//                     ),
+//                   ],
+//                 ),
+//                 child: Column(
+//                   children: [
+//                     SizedBox(
+//                       height: s.height * 0.0107,
+//                     ),
+//                     Text(
+//                       'Activity',
+//                       style:
+//                           TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+//                     ),
+//                     SizedBox(
+//                       height: s.height * 0.0321,
+//                     ),
+//                     Column(
+//                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//                       children: [
+//                         Row(
+//                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//                           children: [
+//                             _buildSquareContainer(
+//                                 Colors.yellow, '7', 'Assigned'),
+//                             _buildSquareContainer(
+//                                 Colors.green, '6', 'Completed'),
+//                           ],
+//                         ),
+//                         SizedBox(
+//                           height: s.height * 0.0729,
+//                         ),
+//                         Row(
+//                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//                           children: [
+//                             _buildSquareContainer(
+//                                 Colors.blue, '5', 'Processing'),
+//                             _buildSquareContainer(Colors.red, '4', 'Pending'),
+//                           ],
+//                         ),
+//                       ],
+//                     ),
+//                   ],
+//                 ),
+//               ),
+//             ),
+//             Padding(
+//               padding: const EdgeInsets.all(18),
+//               child: ElevatedButton(
+//                   onPressed: () {
+//                     //logout function
+//                   },
+//                   style: ElevatedButton.styleFrom(
+//                       fixedSize: Size(s.width * 0.9162, s.height * 0.0590),
+//                       shape: RoundedRectangleBorder(
+//                           borderRadius: BorderRadius.circular(15)),
+//                       backgroundColor: Color(0xFF793BA8)),
+//                   child: Text(
+//                     'Log Out',
+//                     style: TextStyle(fontSize: 18),
+//                   )),
+//             )
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
